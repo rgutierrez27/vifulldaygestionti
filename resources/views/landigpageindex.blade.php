@@ -221,7 +221,7 @@
                 <!-- Speaker-->
                 <div class="speaker">
                     <div class="speaker-img" data-triangle=".speaker-overlay">
-                    <div class="speaker-overlay"></div><a href="#"><img src="images/speaker-03-330x354.jpg" alt="" width="330" height="354"/></a>
+                    <div class="speaker-overlay"></div><a href="#"><img src="images/speaker02.jpg" alt="" width="330" height="354"/></a>
                     <ul class="speaker-social-list">
                         <li><a class="icon icon-xs fa-linkedin" href="https://www.linkedin.com/in/patricia-fuentes-b8b0812a/"></a></li>
                     </ul>
