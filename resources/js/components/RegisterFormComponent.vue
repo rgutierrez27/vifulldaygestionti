@@ -106,6 +106,22 @@ export default {
                 }
 
             })
+            .catch(()=>{
+                let htmp =  `<div class="col-md-12 col-lg-8">
+                        <div class="inset-lg-right-30">
+                            <h4 style='color:#d9534f;'>Tuvimos problemas, al guardar tu información</h4>
+                            <p>Porfavor valida correctamente los datos ingresados</p>
+                            <div class="group">
+                                <a class="button button-secondary box-with-triangle-right" href="/regitroform" data-triangle=".button-overlay">
+                                    <span>Intentar nuevamente</span>
+                                    <span class="button-overlay" style="border-top-width: 60.4px; border-left-width: 187.875px;"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>`;
+
+                    $("#infoAfterRegister").html(htmp);
+            })
             .finally(() => this.loading = false)
         },
 

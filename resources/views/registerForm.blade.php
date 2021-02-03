@@ -5,8 +5,8 @@
 <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);">
     <div class="container">
       <ul class="breadcrumbs-custom-path">
-        <li><a href="/">Full Day</a></li>
-        <li class="active">Formulario</li>
+        <li><a href="/">VI Full Day</a></li>
+        <li class="active">Formulario de registro</li>
       </ul>
       <h3 class="breadcrumbs-custom-title">Participa en nuestro evento</h3>
     </div>

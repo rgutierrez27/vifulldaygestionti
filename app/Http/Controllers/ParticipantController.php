@@ -27,6 +27,7 @@ class ParticipantController extends Controller
         $organization = $request->organization;
 
 
+
         $infoParcticipant = Participant::select('email')
                         ->where('email',$email)
                         ->where('phone',$phone)
@@ -44,13 +45,12 @@ class ParticipantController extends Controller
             ]);
 
             // Send confirmation code
-            Mail::send('emails.confirmation_code', $request->all(), function($message) use ($request) {
+            Mail::send('emails.confirmation_code', ["confirmation_code"=>$confirmation_code,'names' => $names], function($message) use ($request) {
                 $message->to($request->email, $request->names)->subject('Por favor confirma tu correo');
             });
 
             return response()->json(["error"=>false,'message' => "Registro Exitoso"], 200);
         }else{
-
             return response()->json(["error"=>true,'message' => "Datos invalidos"], 200);
         }
 
