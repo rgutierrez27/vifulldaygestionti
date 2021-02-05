@@ -154,7 +154,7 @@
                     </svg>
                     </div>
                     <div class="unit-body">
-                    <h5>Donde ?</h5>
+                    <h5>Donde</h5>
                     <p>Conferencia virtual, via Zoom</p>
                     </div>
                 </div>
@@ -167,14 +167,14 @@
                     </svg>
                     </div>
                     <div class="unit-body">
-                    <h5>Cuando ?</h5>
+                    <h5>Cuando </h5>
                     <p>
                         <time datetime="2019-01-05">Febrero 20, 2021</time>
                     </p>
                     </div>
                 </div>
                 </li>
-            </ul><a class="button button-primary" href="/regitroform" data-triangle=".button-overlay"><span>Participar</span><span class="button-overlay"></span></a>
+            </ul><a class="button button-primary" href="/regitro" data-triangle=".button-overlay"><span>Participar</span><span class="button-overlay"></span></a>
             </div>
             <div class="col-md-10 col-lg-6 col-xl-7 text-md-right">
             <!-- Image Box-->

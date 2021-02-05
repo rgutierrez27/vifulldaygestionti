@@ -22,6 +22,10 @@ Route::get('/regitroform', function(){
     return view('registerForm');
 });
 
+Route::get('/regitro', function(){
+    return view('registerForm');
+});
+
 Route::post('/addparticipant', 'ParticipantController@addparticipant');
 
 // E-mail verification
