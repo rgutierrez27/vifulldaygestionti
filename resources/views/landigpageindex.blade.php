@@ -174,7 +174,7 @@
                     </div>
                 </div>
                 </li>
-            </ul><a class="button button-primary" href="/regitro" data-triangle=".button-overlay"><span>Participar</span><span class="button-overlay"></span></a>
+            </ul><a class="button button-primary" href="/regitroform" data-triangle=".button-overlay"><span>Participar</span><span class="button-overlay"></span></a>
             </div>
             <div class="col-md-10 col-lg-6 col-xl-7 text-md-right">
             <!-- Image Box-->
