@@ -67,8 +67,7 @@
                             </div>
 
                         </div>
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem, aperiam fuga soluta cum necessitatibus, saepe modi neque doloremque quo sequi, voluptas quidem? Eos eveniet omnis quam repellendus quidem praesentium nisi.
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Et sequi officiis atque, exercitationem quaerat sunt animi soluta quod molestiae velit, adipisci ratione ipsum repellat, aperiam fugit quo officia similique consequatur.
+
                         <div class="col-12">
                             <div class="form-wrap">
                                 <label>
