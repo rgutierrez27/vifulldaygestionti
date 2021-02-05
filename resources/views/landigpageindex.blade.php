@@ -387,7 +387,7 @@
                 <div>
                     <!-- Sponsor--><a class="sponsor" target="blank" href="https://www.facebook.com/ISACAUNT" data-triangle=".sponsor-overlay">
                     <div class="sponsor-overlay"></div>
-                    <div class="sponsor-img"><img src="images/sponsor02.png" alt="" width="66" height="83"/>
+                    <div class="sponsor-img"><img src="images/sponsor02.png" alt="" width="120" height="83"/>
                     </div></a>
                 </div>
                 </div>
@@ -398,6 +398,16 @@
                     <!-- Sponsor--><a class="sponsor" target="blank"  href="https://www.instagram.com/d_bambuu/" data-triangle=".sponsor-overlay">
                     <div class="sponsor-overlay"></div>
                     <div class="sponsor-img"><img src="images/sponsor03.png" alt="" width="119" height="33"/>
+                    </div></a>
+                </div>
+                </div>
+            </div>
+            <div class="col-sm-5 col-lg-3">
+                <div class="wow">
+                <div>
+                    <!-- Sponsor--><a class="sponsor" target="blank"  href="https://www.instagram.com/d_bambuu/" data-triangle=".sponsor-overlay">
+                    <div class="sponsor-overlay"></div>
+                    <div class="sponsor-img"><img src="images/sponsor04.png" alt="" width="119" height="33"/>
                     </div></a>
                 </div>
                 </div>

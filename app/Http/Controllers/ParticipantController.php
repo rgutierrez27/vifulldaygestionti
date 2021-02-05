@@ -69,7 +69,7 @@ class ParticipantController extends Controller
         $participant->confirmation_code = null;
         $participant->save();
 
-        return redirect('/home')->with('notification', 'Has confirmado correctamente tu correo!');
+        return redirect('/confirmemailsuccess')->with('notification', 'Has confirmado correctamente tu correo!');
     }
 
     /**

@@ -2004,6 +2004,35 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2014,7 +2043,9 @@ __webpack_require__.r(__webpack_exports__);
         organization: '',
         is_certificate: false
       },
-      loading: false
+      loading: false,
+      success: false,
+      issucess: null
     };
   },
   methods: {
@@ -2023,55 +2054,28 @@ __webpack_require__.r(__webpack_exports__);
 
       e.preventDefault();
       var params = this.form;
-      this.loading = true;
-      console.log(params);
       var isChecked = document.getElementById('certificateid').checked;
 
       if (isChecked) {
         params.is_certificate = true;
-        axios.post("/addparticipant", params).then(function (data) {
-          // alert(JSON.parse(data))
-          //console.log(newData)
-          if (data.data.error != true) {
-            var htm = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h3 style='color:#5cb85c;'>Gracias por registrarse</h3>\n                            <p>Sus datos se han registrado satisfactoriamente, en unos minutos estara recibiendo un correo electr\xF3nico\n                            a la cuenta de correo ingresada para finalizar el proceso de registro</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/\" data-triangle=\".button-overlay\">\n                                    <span>Ir al inicio</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
-            $("#infoAfterRegister").html(htm);
-          } else {
-            var _htm = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h4 style='color:#d9534f;'>Tuvimos problemas, al guardar tu informaci\xF3n</h4>\n                            <p>Porfavor valida correctamente los datos ingresados</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/regitroform\" data-triangle=\".button-overlay\">\n                                    <span>Intentar nuevamente</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
-            $("#infoAfterRegister").html(_htm);
-          }
-        })["catch"](function () {
-          var htmp = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h4 style='color:#d9534f;'>Tuvimos problemas, al guardar tu informaci\xF3n</h4>\n                            <p>Porfavor valida correctamente los datos ingresados</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/regitroform\" data-triangle=\".button-overlay\">\n                                    <span>Intentar nuevamente</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
-          $("#infoAfterRegister").html(htmp);
-        })["finally"](function () {
-          return _this.loading = false;
-        });
       } else {
         params.is_certificate = false;
-        var swalWithBootstrapButtons = Swal.mixin({
-          customClass: {
-            confirmButton: 'btn btn-success',
-            cancelButton: 'btn btn-danger'
-          },
-          buttonsStyling: false
-        });
-        swalWithBootstrapButtons.fire({
-          title: 'Estas seguro que no desea certificado?',
-          text: "",
-          icon: 'warning',
-          showCancelButton: true,
-          confirmButtonText: 'Si, si deseo',
-          cancelButtonText: 'No, no deseo',
-          reverseButtons: true
-        }).then(function (result) {
-          if (result.isConfirmed) {
-            swalWithBootstrapButtons.fire('Deleted!', 'Your file has been deleted.', 'success');
-          } else if (
-          /* Read more about handling dismissals below */
-          result.dismiss === Swal.DismissReason.cancel) {
-            swalWithBootstrapButtons.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
-          }
-        });
       }
+
+      this.loading = true;
+      axios.post("/addparticipant", params).then(function (data) {
+        // alert(JSON.parse(data))
+        //console.log(newData)
+        if (data.data.error != true) {
+          _this.issucess = true;
+        } else {
+          _this.issucess = false;
+        }
+      })["catch"](function () {
+        _this.issucess = false;
+      })["finally"](function () {
+        return _this.loading = false;
+      });
     },
     filterKey: function filterKey(evt) {
       // code is the decimal ASCII representation of the pressed key.
@@ -6547,7 +6551,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#axiosForm[data-v-48023b4a] {\n  /* Components Root Element ID */\n  position: relative;\n}\n.loader[data-v-48023b4a] {\n  /* Loader Div Class */\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: #eceaea;\n  background-image: url(\"https://crossover.evoqondemand.com/Portals/0/Images/Map/xopreload.gif\");\n  background-size: 50px;\n  background-repeat: no-repeat;\n  background-position: center;\n  z-index: 10000000;\n  opacity: 0.4;\n  filter: alpha(opacity=40);\n}\n.helper[data-v-48023b4a] {\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n}\n.loaderImg[data-v-48023b4a] {\n  vertical-align: middle;\n  max-height: 300px;\n  max-width: 300px;\n}\n\n\n\n\n\n", ""]);
+exports.push([module.i, "\n#axiosForm[data-v-48023b4a] {\n  /* Components Root Element ID */\n  position: relative;\n}\n.loader[data-v-48023b4a] {\n  /* Loader Div Class */\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: #eceaea;\n  background-image: url(\"https://crossover.evoqondemand.com/Portals/0/Images/Map/xopreload.gif\");\n  background-size: 50px;\n  background-repeat: no-repeat;\n  background-position: center;\n  z-index: 10000000;\n  opacity: 0.4;\n  filter: alpha(opacity=40);\n}\n.helper[data-v-48023b4a] {\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n}\n.loaderImg[data-v-48023b4a] {\n  vertical-align: middle;\n  max-height: 300px;\n  max-width: 300px;\n}\n#certificateid[data-v-48023b4a]{\nwidth: 20px;\nheight: 20px;\n}\n", ""]);
 
 // exports
 
@@ -38416,196 +38420,230 @@ var render = function() {
               attrs: { id: "infoAfterRegister" }
             },
             [
-              _c("div", { staticClass: "col-md-12 col-lg-8" }, [
-                _c("h4", [_vm._v("Registrate para poder participar")]),
-                _vm._v(" "),
-                _c(
-                  "form",
-                  {
-                    staticClass: "rd-form rd-mailform",
-                    attrs: {
-                      "data-form-output": "form-output-global",
-                      "data-form-type": "contact",
-                      method: "post",
-                      action: ""
+              _vm.issucess == true
+                ? _c("div", { staticClass: "col-md-12 col-lg-8" }, [_vm._m(0)])
+                : _vm._e(),
+              _vm._v(" "),
+              _vm.issucess == false
+                ? _c("div", { staticClass: "col-md-12 col-lg-8" }, [_vm._m(1)])
+                : _vm._e(),
+              _vm._v(" "),
+              _c(
+                "div",
+                {
+                  directives: [
+                    {
+                      name: "show",
+                      rawName: "v-show",
+                      value: _vm.issucess == null,
+                      expression: "issucess == null"
+                    }
+                  ],
+                  staticClass: "col-md-12 col-lg-8"
+                },
+                [
+                  _c("h4", [_vm._v("Registrate para poder participar")]),
+                  _vm._v(" "),
+                  _c(
+                    "form",
+                    {
+                      staticClass: "rd-form rd-mailform",
+                      attrs: {
+                        "data-form-output": "form-output-global",
+                        "data-form-type": "contact",
+                        method: "post",
+                        action: ""
+                      },
+                      on: { submit: _vm.onSubmit }
                     },
-                    on: { submit: _vm.onSubmit }
-                  },
-                  [
-                    _c("div", { staticClass: "row row-narrow row-20" }, [
-                      _c("div", { staticClass: "col-md-12" }, [
-                        _c("div", { staticClass: "form-wrap" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.names,
-                                expression: "form.names"
-                              }
-                            ],
-                            staticClass: "form-input",
-                            attrs: {
-                              id: "contact-name",
-                              type: "text",
-                              name: "name",
-                              "data-constraints": "@Required"
-                            },
-                            domProps: { value: _vm.form.names },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                    [
+                      _c("div", { staticClass: "row row-narrow row-20" }, [
+                        _c("div", { staticClass: "col-md-12" }, [
+                          _c("div", { staticClass: "form-wrap" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.names,
+                                  expression: "form.names"
                                 }
-                                _vm.$set(_vm.form, "names", $event.target.value)
-                              }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "contact-name" }
-                            },
-                            [_vm._v("Nombre y apellidos")]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("div", { staticClass: "form-wrap" }, [
-                          _c("input", {
-                            directives: [
-                              {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.email,
-                                expression: "form.email"
-                              }
-                            ],
-                            staticClass: "form-input",
-                            attrs: {
-                              id: "contact-email",
-                              type: "email",
-                              name: "email",
-                              "data-constraints": "@Email @Required"
-                            },
-                            domProps: { value: _vm.form.email },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                              ],
+                              staticClass: "form-input",
+                              attrs: {
+                                id: "contact-name",
+                                type: "text",
+                                name: "name",
+                                "data-constraints": "@Required"
+                              },
+                              domProps: { value: _vm.form.names },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "names",
+                                    $event.target.value
+                                  )
                                 }
-                                _vm.$set(_vm.form, "email", $event.target.value)
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "contact-email" }
-                            },
-                            [_vm._v("E-mail")]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-md-6" }, [
-                        _c("div", { staticClass: "form-wrap" }, [
-                          _c("input", {
-                            directives: [
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
                               {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.phone,
-                                expression: "form.phone"
-                              }
-                            ],
-                            staticClass: "form-input",
-                            attrs: {
-                              id: "contact-phone",
-                              type: "text",
-                              name: "phone",
-                              maxlength: "9",
-                              "data-constraints": "@Required"
-                            },
-                            domProps: { value: _vm.form.phone },
-                            on: {
-                              keydown: _vm.filterKey,
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                                staticClass: "form-label",
+                                attrs: { for: "contact-name" }
+                              },
+                              [_vm._v("Nombre y apellidos")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "form-wrap" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.email,
+                                  expression: "form.email"
                                 }
-                                _vm.$set(_vm.form, "phone", $event.target.value)
+                              ],
+                              staticClass: "form-input",
+                              attrs: {
+                                id: "contact-email",
+                                type: "email",
+                                name: "email",
+                                "data-constraints": "@Email @Required"
+                              },
+                              domProps: { value: _vm.form.email },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "email",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "contact-phone" }
-                            },
-                            [_vm._v("Numero Celular")]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _c("div", { staticClass: "col-12" }, [
-                        _c("div", { staticClass: "form-wrap" }, [
-                          _c("input", {
-                            directives: [
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
                               {
-                                name: "model",
-                                rawName: "v-model",
-                                value: _vm.form.organization,
-                                expression: "form.organization"
-                              }
-                            ],
-                            staticClass: "form-input",
-                            attrs: {
-                              id: "contact-organization",
-                              type: "organization",
-                              name: "organization",
-                              "data-constraints": "@Required"
-                            },
-                            domProps: { value: _vm.form.organization },
-                            on: {
-                              input: function($event) {
-                                if ($event.target.composing) {
-                                  return
+                                staticClass: "form-label",
+                                attrs: { for: "contact-email" }
+                              },
+                              [_vm._v("E-mail")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-md-6" }, [
+                          _c("div", { staticClass: "form-wrap" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.phone,
+                                  expression: "form.phone"
                                 }
-                                _vm.$set(
-                                  _vm.form,
-                                  "organization",
-                                  $event.target.value
-                                )
+                              ],
+                              staticClass: "form-input",
+                              attrs: {
+                                id: "contact-phone",
+                                type: "text",
+                                name: "phone",
+                                maxlength: "9",
+                                "data-constraints": "@Required"
+                              },
+                              domProps: { value: _vm.form.phone },
+                              on: {
+                                keydown: _vm.filterKey,
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "phone",
+                                    $event.target.value
+                                  )
+                                }
                               }
-                            }
-                          }),
-                          _vm._v(" "),
-                          _c(
-                            "label",
-                            {
-                              staticClass: "form-label",
-                              attrs: { for: "contact-organization" }
-                            },
-                            [_vm._v("Organización / Universidad")]
-                          )
-                        ])
-                      ]),
-                      _vm._v(" "),
-                      _vm._m(0),
-                      _vm._v(" "),
-                      _vm._m(1)
-                    ])
-                  ]
-                )
-              ])
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "contact-phone" }
+                              },
+                              [_vm._v("Numero Celular")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _c("div", { staticClass: "col-12" }, [
+                          _c("div", { staticClass: "form-wrap" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.form.organization,
+                                  expression: "form.organization"
+                                }
+                              ],
+                              staticClass: "form-input",
+                              attrs: {
+                                id: "contact-organization",
+                                type: "organization",
+                                name: "organization",
+                                "data-constraints": "@Required"
+                              },
+                              domProps: { value: _vm.form.organization },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.$set(
+                                    _vm.form,
+                                    "organization",
+                                    $event.target.value
+                                  )
+                                }
+                              }
+                            }),
+                            _vm._v(" "),
+                            _c(
+                              "label",
+                              {
+                                staticClass: "form-label",
+                                attrs: { for: "contact-organization" }
+                              },
+                              [_vm._v("Organización / Universidad")]
+                            )
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(2),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ])
+                    ]
+                  )
+                ]
+              )
             ]
           )
         ])
@@ -38618,6 +38656,76 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inset-lg-right-30" }, [
+      _c("h3", { staticStyle: { color: "#5cb85c" } }, [
+        _vm._v("Gracias por registrarse")
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "Sus datos se han registrado satisfactoriamente, en unos minutos estara recibiendo un correo electrónico\n                        a la cuenta de correo ingresada para finalizar el proceso de registro"
+        )
+      ]),
+      _vm._v(" "),
+      _c("div", { staticClass: "group" }, [
+        _c(
+          "a",
+          {
+            staticClass: "button button-secondary box-with-triangle-right",
+            attrs: { href: "/", "data-triangle": ".button-overlay" }
+          },
+          [
+            _c("span", [_vm._v("Ir al inicio")]),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: "button-overlay",
+              staticStyle: {
+                "border-top-width": "60.4px",
+                "border-left-width": "187.875px"
+              }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "inset-lg-right-30" }, [
+      _c("h4", { staticStyle: { color: "#d9534f" } }, [
+        _vm._v("Tuvimos problemas, al guardar tu información")
+      ]),
+      _vm._v(" "),
+      _c("p", [_vm._v("Porfavor valida correctamente los datos ingresados")]),
+      _vm._v(" "),
+      _c("div", { staticClass: "group" }, [
+        _c(
+          "a",
+          {
+            staticClass: "button button-secondary box-with-triangle-right",
+            attrs: { href: "/regitroform", "data-triangle": ".button-overlay" }
+          },
+          [
+            _c("span", [_vm._v("Intentar nuevamente")]),
+            _vm._v(" "),
+            _c("span", {
+              staticClass: "button-overlay",
+              staticStyle: {
+                "border-top-width": "60.4px",
+                "border-left-width": "187.875px"
+              }
+            })
+          ]
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "col-12" }, [
       _c("div", { staticClass: "form-wrap" }, [
         _c("label", [
@@ -38625,7 +38733,7 @@ var staticRenderFns = [
           _vm._v(" "),
           _c("span"),
           _vm._v(
-            "\n                            Deseo Certificado (S/.15)\n                        "
+            "\n                                Deseo Certificado (S/.15)\n                            "
           )
         ])
       ])
