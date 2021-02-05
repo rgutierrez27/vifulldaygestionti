@@ -117,6 +117,7 @@
             bottom: 30px;
             right: 30px;
             letter-spacing: 1px;
+            margin-top: 22px;
         }
 
         /* SOCIAL PANEL CSS */
@@ -293,10 +294,10 @@
                 <div class="progress-container">
                     <div class="progress"></div>
                     <span class="progress-text">
-                        1/2 Confirmación
+
                     </span>
                 </div>
-                <h6>Hola </h6>
+                <h6>Gracias por tu registrate </h6>
                 <h2>{{$names}}</h2>
                 <h5>Porfavor haz click en continuar para verificar su correo</h5>
                 <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: info@vifulldaygestionti.com</span>

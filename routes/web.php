@@ -29,6 +29,6 @@ Route::post('/addparticipant', 'ParticipantController@addparticipant');
 // E-mail verification
 Route::get('/register/verify/{code}', 'ParticipantController@verify');
 
-Route::get('/confirmemailsuccess', function(){
+Route::post('/confirmemailsuccess', function(){
     return view('confirmForm');
 });
