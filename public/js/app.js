@@ -1993,6 +1993,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2000,7 +2011,8 @@ __webpack_require__.r(__webpack_exports__);
         names: '',
         email: '',
         phone: '',
-        organization: ''
+        organization: '',
+        is_certificate: false
       },
       loading: false
     };
@@ -2012,19 +2024,54 @@ __webpack_require__.r(__webpack_exports__);
       e.preventDefault();
       var params = this.form;
       this.loading = true;
-      axios.post("/addparticipant", params).then(function (data) {
-        // alert(JSON.parse(data))
-        //console.log(newData)
-        if (data.data.error != true) {
-          var htm = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h3 style='color:#5cb85c;'>Gracias por registrarse</h3>\n                            <p>Sus datos se han registrado satisfactoriamente, en unos minutos estara recibiendo un correo electr\xF3nico\n                            a la cuenta de correo ingresada para finalizar el proceso de registro</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/\" data-triangle=\".button-overlay\">\n                                    <span>Ir al inicio</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
-          $("#infoAfterRegister").html(htm);
-        } else {
-          var _htm = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h4 style='color:#d9534f;'>Tuvimos problemas, al guardar tu informaci\xF3n</h4>\n                            <p>Porfavor valida correctamente los datos ingresados</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/regitroform\" data-triangle=\".button-overlay\">\n                                    <span>Intentar nuevamente</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
-          $("#infoAfterRegister").html(_htm);
-        }
-      })["finally"](function () {
-        return _this.loading = false;
-      });
+      console.log(params);
+      var isChecked = document.getElementById('certificateid').checked;
+
+      if (isChecked) {
+        params.is_certificate = true;
+        axios.post("/addparticipant", params).then(function (data) {
+          // alert(JSON.parse(data))
+          //console.log(newData)
+          if (data.data.error != true) {
+            var htm = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h3 style='color:#5cb85c;'>Gracias por registrarse</h3>\n                            <p>Sus datos se han registrado satisfactoriamente, en unos minutos estara recibiendo un correo electr\xF3nico\n                            a la cuenta de correo ingresada para finalizar el proceso de registro</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/\" data-triangle=\".button-overlay\">\n                                    <span>Ir al inicio</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
+            $("#infoAfterRegister").html(htm);
+          } else {
+            var _htm = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h4 style='color:#d9534f;'>Tuvimos problemas, al guardar tu informaci\xF3n</h4>\n                            <p>Porfavor valida correctamente los datos ingresados</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/regitroform\" data-triangle=\".button-overlay\">\n                                    <span>Intentar nuevamente</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
+            $("#infoAfterRegister").html(_htm);
+          }
+        })["catch"](function () {
+          var htmp = "<div class=\"col-md-12 col-lg-8\">\n                        <div class=\"inset-lg-right-30\">\n                            <h4 style='color:#d9534f;'>Tuvimos problemas, al guardar tu informaci\xF3n</h4>\n                            <p>Porfavor valida correctamente los datos ingresados</p>\n                            <div class=\"group\">\n                                <a class=\"button button-secondary box-with-triangle-right\" href=\"/regitroform\" data-triangle=\".button-overlay\">\n                                    <span>Intentar nuevamente</span>\n                                    <span class=\"button-overlay\" style=\"border-top-width: 60.4px; border-left-width: 187.875px;\"></span>\n                                </a>\n                            </div>\n                        </div>\n                    </div>";
+          $("#infoAfterRegister").html(htmp);
+        })["finally"](function () {
+          return _this.loading = false;
+        });
+      } else {
+        params.is_certificate = false;
+        var swalWithBootstrapButtons = Swal.mixin({
+          customClass: {
+            confirmButton: 'btn btn-success',
+            cancelButton: 'btn btn-danger'
+          },
+          buttonsStyling: false
+        });
+        swalWithBootstrapButtons.fire({
+          title: 'Estas seguro que no desea certificado?',
+          text: "",
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonText: 'Si, si deseo',
+          cancelButtonText: 'No, no deseo',
+          reverseButtons: true
+        }).then(function (result) {
+          if (result.isConfirmed) {
+            swalWithBootstrapButtons.fire('Deleted!', 'Your file has been deleted.', 'success');
+          } else if (
+          /* Read more about handling dismissals below */
+          result.dismiss === Swal.DismissReason.cancel) {
+            swalWithBootstrapButtons.fire('Cancelled', 'Your imaginary file is safe :)', 'error');
+          }
+        });
+      }
     },
     filterKey: function filterKey(evt) {
       // code is the decimal ASCII representation of the pressed key.
@@ -6500,7 +6547,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n#axiosForm[data-v-48023b4a] {\n  /* Components Root Element ID */\n  position: relative;\n}\n.loader[data-v-48023b4a] {\n  /* Loader Div Class */\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: #eceaea;\n  background-image: url(\"https://crossover.evoqondemand.com/Portals/0/Images/Map/xopreload.gif\");\n  background-size: 50px;\n  background-repeat: no-repeat;\n  background-position: center;\n  z-index: 10000000;\n  opacity: 0.4;\n  filter: alpha(opacity=40);\n}\n.helper[data-v-48023b4a] {\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n}\n.loaderImg[data-v-48023b4a] {\n  vertical-align: middle;\n  max-height: 300px;\n  max-width: 300px;\n}\n", ""]);
+exports.push([module.i, "\n#axiosForm[data-v-48023b4a] {\n  /* Components Root Element ID */\n  position: relative;\n}\n.loader[data-v-48023b4a] {\n  /* Loader Div Class */\n  position: absolute;\n  top: 0px;\n  right: 0px;\n  width: 100%;\n  height: 100%;\n  background-color: #eceaea;\n  background-image: url(\"https://crossover.evoqondemand.com/Portals/0/Images/Map/xopreload.gif\");\n  background-size: 50px;\n  background-repeat: no-repeat;\n  background-position: center;\n  z-index: 10000000;\n  opacity: 0.4;\n  filter: alpha(opacity=40);\n}\n.helper[data-v-48023b4a] {\n  display: inline-block;\n  height: 100%;\n  vertical-align: middle;\n}\n.loaderImg[data-v-48023b4a] {\n  vertical-align: middle;\n  max-height: 300px;\n  max-width: 300px;\n}\n\n\n\n\n\n", ""]);
 
 // exports
 
@@ -38552,7 +38599,9 @@ var render = function() {
                         ])
                       ]),
                       _vm._v(" "),
-                      _vm._m(0)
+                      _vm._m(0),
+                      _vm._v(" "),
+                      _vm._m(1)
                     ])
                   ]
                 )
@@ -38565,6 +38614,23 @@ var render = function() {
   ])
 }
 var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "col-12" }, [
+      _c("div", { staticClass: "form-wrap" }, [
+        _c("label", [
+          _c("input", { attrs: { type: "checkbox", id: "certificateid" } }),
+          _vm._v(" "),
+          _c("span"),
+          _vm._v(
+            "\n                            Deseo Certificado (S/.15)\n                        "
+          )
+        ])
+      ])
+    ])
+  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

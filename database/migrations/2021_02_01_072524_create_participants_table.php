@@ -22,6 +22,7 @@ class CreateParticipantsTable extends Migration
             $table->boolean('confirmed')->default(0);
             $table->string('confirmation_code')->nullable();
             $table->integer('IS_DELETE')->nullable(false)->default(0);
+            $table->boolean('IS_CERTIFICATE')->default(0);
             $table->timestamps();
         });
     }

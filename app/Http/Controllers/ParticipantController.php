@@ -25,7 +25,7 @@ class ParticipantController extends Controller
         $email = $request->email;
         $phone =  $request->phone;
         $organization = $request->organization;
-
+        $is_certificate = $request->is_certificate;
 
 
         $infoParcticipant = Participant::select('email')
@@ -42,6 +42,7 @@ class ParticipantController extends Controller
                 'organization' => $organization,
                 'confirmation_code' => $confirmation_code,
                 "IS_DELETE" => 0,
+                "IS_CERTIFICATE" => $is_certificate,
             ]);
 
             // Send confirmation code

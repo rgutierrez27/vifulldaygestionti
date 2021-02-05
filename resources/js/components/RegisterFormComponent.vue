@@ -38,6 +38,17 @@
                     </div>
 
                 </div>
+                <div class="col-12">
+                    <div class="form-wrap">
+                        <label>
+                            <input type='checkbox' id="certificateid">
+                            <span></span>
+                            Deseo Certificado (S/.15)
+                        </label>
+                    </div>
+
+                </div>
+
                 <div class="col-md-12">
                     <button class="button button-lg button-primary" type="submit" data-triangle=".button-overlay"><span>Confirmar</span><span class="button-overlay"></span></button>
                 </div>
@@ -58,7 +69,8 @@ export default {
                 names: '',
                 email: '',
                 phone: '',
-                organization : ''
+                organization : '',
+                is_certificate:false
             },
             loading: false,
         }
@@ -68,6 +80,12 @@ export default {
             e.preventDefault();
             let params = this.form;
             this.loading = true;
+            console.log(params);
+
+            var isChecked = document.getElementById('certificateid').checked;
+            if(isChecked){
+                params.is_certificate = true
+
             axios.post(`/addparticipant`,params)
             .then((data) =>{
                 // alert(JSON.parse(data))
@@ -123,6 +141,48 @@ export default {
                     $("#infoAfterRegister").html(htmp);
             })
             .finally(() => this.loading = false)
+
+
+            }else{
+                params.is_certificate = false
+                const swalWithBootstrapButtons = Swal.mixin({
+                    customClass: {
+                        confirmButton: 'btn btn-success',
+                        cancelButton: 'btn btn-danger'
+                    },
+                    buttonsStyling: false
+                    })
+
+                    swalWithBootstrapButtons.fire({
+                    title: 'Estas seguro que no desea certificado?',
+                    text: "",
+                    icon: 'warning',
+                    showCancelButton: true,
+                    confirmButtonText: 'Si, si deseo',
+                    cancelButtonText: 'No, no deseo',
+                    reverseButtons: true
+                    }).then((result) => {
+                    if (result.isConfirmed) {
+                        swalWithBootstrapButtons.fire(
+                        'Deleted!',
+                        'Your file has been deleted.',
+                        'success'
+                        )
+                    } else if (
+                        /* Read more about handling dismissals below */
+                        result.dismiss === Swal.DismissReason.cancel
+                    ) {
+                        swalWithBootstrapButtons.fire(
+                        'Cancelled',
+                        'Your imaginary file is safe :)',
+                        'error'
+                        )
+                    }
+                    })
+            }
+
+
+
         },
 
         filterKey(evt) {
@@ -175,4 +235,9 @@ export default {
   max-height: 300px;
   max-width: 300px;
 }
+
+
+
+
+
 </style>

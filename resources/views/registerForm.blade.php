@@ -1,5 +1,10 @@
 @extends('layouts.layout')
 
+@section('styles')
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.min.css">
+
+@endsection
+
 @section('SectionRegisterForm')
 
 <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);">
@@ -19,6 +24,7 @@
 
 @section('scripts')
 <script src="/js/app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.all.js"></script>
 {{-- <script>
     var app = new Vue({
       el: '#app',
