@@ -1,7 +1,7 @@
 @extends('layouts.layout')
 
 @section('styles')
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.min.css">
+{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.min.css"> --}}
 
 @endsection
 
@@ -24,7 +24,7 @@
 
 @section('scripts')
 <script src="/js/app.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.all.js"></script>
+{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.all.js"></script> --}}
 {{-- <script>
     var app = new Vue({
       el: '#app',

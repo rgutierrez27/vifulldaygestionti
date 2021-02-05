@@ -25,7 +25,7 @@ class ParticipantController extends Controller
         $email = $request->email;
         $phone =  $request->phone;
         $organization = $request->organization;
-        $is_certificate = $request->is_certificate;
+        $is_certificate = $request->is_certificate ?? false;
 
 
         $infoParcticipant = Participant::select('email')
@@ -51,6 +51,8 @@ class ParticipantController extends Controller
             });
 
             return response()->json(["error"=>false,'message' => "Registro Exitoso"], 200);
+
+            //return view('confirmemailsuccess', compact(credentials));
         }else{
             return response()->json(["error"=>true,'message' => "Datos invalidos"], 200);
         }
