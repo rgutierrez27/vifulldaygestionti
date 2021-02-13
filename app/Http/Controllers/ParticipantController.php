@@ -74,6 +74,15 @@ class ParticipantController extends Controller
         return redirect('/confirmemailsuccess');
     }
 
+
+    public function listparticipantes(){
+        return view('listParticipants');
+    }
+
+    public function getparticipant(){
+        $infoParcticipant = Participant::get();
+        return response()->json(["error"=>false,'infoParcticipant' => $infoParcticipant], 200);
+    }
     /**
      * Show the form for creating a new resource.
      *

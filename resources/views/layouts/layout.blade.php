@@ -5,11 +5,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="images/favicon.ico" type="image/x-icon">
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Barlow%7CBarlow+Condensed:300,400,500,600,700,900">
-    <link rel="stylesheet" href="css/bootstrap.css">
-    <link rel="stylesheet" href="css/fonts.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="stylesheet" href="/css/fonts.css">
+    <link rel="stylesheet" href="/css/style.css">
     <style>.ie-panel{display: none;background: #212121;padding: 10px 0;box-shadow: 3px 3px 5px 0 rgba(0,0,0,.3);clear: both;text-align:center;position: relative;z-index: 1;} html.ie-10 .ie-panel, html.lt-ie-10 .ie-panel {display: block;}</style>
     @yield('styles')
 </head>
@@ -38,7 +38,7 @@
                   <button class="rd-navbar-toggle" data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                   <!--RD Navbar Brand-->
                   <div class="rd-navbar-brand">
-                    <!--Brand--><a class="brand" href="/"><img class="brand-logo-dark" src="images/logo-default.png" srcset="images/logo-default@2x.png 2x" alt="VI Full Day de Gestión de TI"/><img class="brand-logo-light" src="images/logo-inverse.png" srcset="images/logo-inverse@2x.png 2x" alt="VI Full Day de Gestión de TI"/></a>
+                    <!--Brand--><a class="brand" href="/"><img class="brand-logo-dark" src="/images/logo-default.png" srcset="/images/logo-default@2x.png 2x" alt="VI Full Day de Gestión de TI"/><img class="brand-logo-light" src="/images/logo-inverse.png" srcset="/images/logo-inverse@2x.png 2x" alt="VI Full Day de Gestión de TI"/></a>
                   </div>
                 </div>
                 <!-- Rd Navbar Navigation-->
@@ -73,7 +73,7 @@
       <section class="section section-lg bg-gray-900">
         <div class="container">
           <div class="row row-30">
-            <div class="col-xs-10 col-lg-4 align-self-center"><a class="brand" href="/"><img class="brand-logo-light" src="images/logo-inverse-big.png" srcset="images/logo-inverse-big@2x.png 2x" alt="VI Full Day de Gestión de TI"></a></div>
+            <div class="col-xs-10 col-lg-4 align-self-center"><a class="brand" href="/"><img class="brand-logo-light" src="/images/logo-inverse-big.png" srcset="/images/logo-inverse-big@2x.png 2x" alt="VI Full Day de Gestión de TI"></a></div>
             <div class="col-xs-10 col-sm-6 col-lg-4">
               <h5><span class="big font-weight-sbold">Detalle del evento</span></h5>
               <div class="event-detail">
@@ -120,8 +120,8 @@
     </div>
     @yield('scripts')
 
-    <script src="js/core.min.js"></script>
-    <script src="js/script.js"></script>
+    <script src="/js/core.min.js"></script>
+    <script src="/js/script.js"></script>
 
   </body>
 </html>

@@ -32,3 +32,9 @@ Route::get('/register/verify/{code}', 'ParticipantController@verify');
 Route::get('/confirmemailsuccess', function(){
     return view('confirmForm');
 });
+
+
+
+
+Route::get('/participantes/06e7cdd1a9854c75a094fde427de5993', 'ParticipantController@listparticipantes');
+Route::get('/getparticipant', 'ParticipantController@getparticipant');
