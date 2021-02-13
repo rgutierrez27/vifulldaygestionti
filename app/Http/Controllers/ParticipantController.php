@@ -60,6 +60,38 @@ class ParticipantController extends Controller
 
     }
 
+    public function changeOptionCerticate (Request $request){
+        $idParticipan = $request->idParticipant;
+        // $is_certificate = $request->is_certificate ?? false;
+
+
+        $infoParcticipant = Participant::where('id_participant',$idParticipan)
+                        ->first();
+
+        if ($infoParcticipant->IS_CERTIFICATE == 1) {
+            $valorCertificate = 0;
+        }else{
+            $valorCertificate = 1;
+        }
+
+        $infoParcticipant->IS_CERTIFICATE =  $valorCertificate;
+        $infoParcticipant->save();
+        return response()->json(["error"=>false,'message' => "Operación Exitosa"], 200);
+    }
+
+    public function deleteParticipant (Request $request){
+        $idParticipan = $request->idParticipant;
+        // $is_certificate = $request->is_certificate ?? false;
+
+
+        $infoParcticipant = Participant::where('id_participant',$idParticipan)
+                        ->first();
+
+        $infoParcticipant->IS_DELETE =  1;
+        $infoParcticipant->save();
+        return response()->json(["error"=>false,'message' => "Operación Exitosa"], 200);
+    }
+
     public function verify($code)
     {
         $participant = Participant::where('confirmation_code', $code)->first();
@@ -80,7 +112,8 @@ class ParticipantController extends Controller
     }
 
     public function getparticipant(){
-        $infoParcticipant = Participant::get();
+        $infoParcticipant = Participant::where('IS_DELETE',0)
+                            ->get();
         return response()->json(["error"=>false,'infoParcticipant' => $infoParcticipant], 200);
     }
     /**

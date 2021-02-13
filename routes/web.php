@@ -38,3 +38,5 @@ Route::get('/confirmemailsuccess', function(){
 
 Route::get('/participantes/06e7cdd1a9854c75a094fde427de5993', 'ParticipantController@listparticipantes');
 Route::get('/getparticipant', 'ParticipantController@getparticipant');
+Route::post('/changeOptionCerticate', 'ParticipantController@changeOptionCerticate');
+Route::post('/deleteParticipant', 'ParticipantController@deleteParticipant');
