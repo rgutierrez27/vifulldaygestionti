@@ -33,7 +33,7 @@ Route::get('/confirmemailsuccess', function(){
     return view('confirmForm');
 });
 
-Route::get('/participantes/06e7cdd1a9854c75a094fde427de5993', 'ParticipantController@listparticipantes');
+Route::get('/participantes/e79bf02ccf0aab45be24713e36aa2c7b2ad3cf5eaa1c7b584d8a43c09a1c61c6cacf3d0803b44ee33bd43239e55a8563e6a31eb6afdd507aeb5228b65437ba31', 'ParticipantController@listparticipantes');
 Route::get('/getparticipant', 'ParticipantController@getparticipant');
 Route::post('/changeOptionCerticate', 'ParticipantController@changeOptionCerticate');
 Route::post('/deleteParticipant', 'ParticipantController@deleteParticipant');
