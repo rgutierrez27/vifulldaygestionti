@@ -119,6 +119,9 @@
 
                     </ul>
                 </div>
+
+            </div>
+            <div class="col-md-4">
                 <div class="d-grid gap-2">
                     <button type="button" class="btn btn-success mt-3 btn-block" id="random_location"><i class="fas fa-play"></i> Play! Para sortear</button>
                 </div>
@@ -169,6 +172,9 @@
 
             //se crea la lista de elementos o slot
             function makeSlots() {
+                //barajeamos el array
+                msa.sort(function() { return Math.random() - 0.5 });
+                msa = msa;
                 //inicia en el valor aleatorio previo
                 var list = ['<li>' + $input.val() + '</li>'];
                 //se hace recursivo el llamado
@@ -179,7 +185,7 @@
                 number: 1,
                 spinner: '.jSlots-wrapper',
                 spinEvent: 'spin',
-                time : 7000,
+                time : 2000,
                 loops : 6,
                 endNum: 2, //finaliza en el segundo elmento del arreglo aleatorio
                 onEnd: function (finalElement) {
@@ -211,6 +217,9 @@
                                         msa.push(objeto);
 
                                 }
+
+                                var arr1 = ["a", "b", "c", "d"];
+
                                 // for ( x in msa) {
                                 //     console.log( msa[x] );
                                 // }
