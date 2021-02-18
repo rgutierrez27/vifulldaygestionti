@@ -297,7 +297,7 @@
 
                     </span>
                 </div>
-                <h6>Gracias por tu registrate </h6>
+                <h6>Gracias por registarte </h6>
                 <h2>{{$names}}</h2>
                 <h5>Porfavor haz click en continuar para verificar su correo</h5>
                 <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: info@vifulldaygestionti.com</span>

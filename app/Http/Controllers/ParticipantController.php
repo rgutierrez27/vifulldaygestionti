@@ -111,6 +111,10 @@ class ParticipantController extends Controller
         return view('listParticipants');
     }
 
+    public function indexSorteo(){
+        return view('sorteoParticipants');
+    }
+
     public function getparticipant(){
         $infoParcticipant = Participant::where('IS_DELETE',0)
                             ->get();
