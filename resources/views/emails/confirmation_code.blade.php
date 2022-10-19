@@ -300,10 +300,12 @@
                 <h6>Gracias por registarte </h6>
                 <h2>{{$names}}</h2>
                 <h5>Porfavor haz click en continuar para verificar su correo</h5>
+                <p>Publico General: S/. 120.00</p>
+                <p>Miembros del colegio (convenio): S/. 60.00</p>
                 <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: vrinvestigacion@uct.edu.pe</span>
                 <br>
 
-                <a href="{{ url('/register/verify/' . $confirmation_code) }}" target="_blank">
+                <a href="{{ url('/register/verify/' . $confirmation_code) }}" target="_blank" style="cursor: pointer;">
                     <button  class="btn">Continuar</button>
                 </a>
 

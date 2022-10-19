@@ -110,7 +110,7 @@ class ParticipantController extends Controller
         }else{ // Si existe la persona en la base de datos de la UCT, validamos que no tenag registro para este congreso
             $persona = PersonaUCT::where('numerodocumento', $dni)->first();
             $personaSelect = $persona->persona;
-            $participant = Participant::where('persona', $personaSelect)->where('is_delete', 0)->first();
+            $participant = Participant::where('persona','sss')->where('is_delete', 0)->first();
             if ($participant) {
                 return response()->json([
                     'message' => 'Ya se encuentra registrado en el congreso',

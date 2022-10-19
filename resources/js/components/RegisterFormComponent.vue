@@ -125,7 +125,7 @@
                                         Deseo Certificado
                                     </label>
                                 </div>
-
+                                <img class="img-fluid" src="https://i.imgur.com/8dxbzWH.png" width="40%" alt="" srcset="">
                             </div>
 
                             <div class="col-md-12">

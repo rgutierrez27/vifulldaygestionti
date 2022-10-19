@@ -61,7 +61,7 @@
                                         role="button" class="collapsed"><span class="schedule-classic"><span
                                                 class="unit unit-spacing-md align-items-center d-block d-md-flex"><span
                                                     class="unit-left"><span class="schedule-classic-img"><img
-                                                            src="images/ponentes/ponente-default.jpg" alt=""
+                                                            src="images/ponentes/Carlos-Alberto-Gallego-Monsalve.jpg" alt=""
                                                             width="122" height="122"></span></span><span
                                                     class="unit-body"><span class="schedule-classic-content"><span
                                                             class="schedule-classic-time">18:05 – 19:00 pm</span><span
@@ -97,7 +97,7 @@
                                         role="button" class="collapsed"><span class="schedule-classic"><span
                                                 class="unit unit-spacing-md align-items-center d-block d-md-flex"><span
                                                     class="unit-left"><span class="schedule-classic-img"><img
-                                                            src="images/ponentes/ponente-default.jpg" alt=""
+                                                            src="images/ponentes/Dr.-Julio-Zurita.jpg" alt=""
                                                             width="122" height="122"></span></span><span
                                                     class="unit-body"><span class="schedule-classic-content"><span
                                                             class="schedule-classic-time">9:00 – 10:00 am</span><span
@@ -138,7 +138,7 @@
                                         role="button" class="collapsed"><span class="schedule-classic"><span
                                                 class="unit unit-spacing-md align-items-center d-block d-md-flex"><span
                                                     class="unit-left"><span class="schedule-classic-img"><img
-                                                            src="images/ponentes/ponente-default.jpg" alt=""
+                                                            src="images/ponentes/Dr-Hernan-A-Vera.jpg" alt=""
                                                             width="122" height="122"></span></span><span
                                                     class="unit-body"><span class="schedule-classic-content"><span
                                                             class="schedule-classic-time">15:00 – 16:00 pm</span><span
@@ -174,7 +174,7 @@
                                         role="button" class="collapsed"><span class="schedule-classic"><span
                                                 class="unit unit-spacing-md align-items-center d-block d-md-flex"><span
                                                     class="unit-left"><span class="schedule-classic-img"><img
-                                                            src="images/ponentes/ponente-default.jpg" alt=""
+                                                            src="images/ponentes/8.jpg" alt=""
                                                             width="122" height="122"></span></span><span
                                                     class="unit-body"><span class="schedule-classic-content"><span
                                                             class="schedule-classic-time">09:00 – 10:00 am</span><span
@@ -250,7 +250,7 @@
                                         role="button" class="collapsed"><span class="schedule-classic"><span
                                                 class="unit unit-spacing-md align-items-center d-block d-md-flex"><span
                                                     class="unit-left"><span class="schedule-classic-img"><img
-                                                            src="images/ponentes/ponente-default.jpg" alt=""
+                                                            src="images/ponentes/Dra-Vania-Elisabete-Schneider.jpg" alt=""
                                                             width="122" height="122"></span></span><span
                                                     class="unit-body"><span class="schedule-classic-content"><span
                                                             class="schedule-classic-time">15:00 – 16:00 pm</span><span
