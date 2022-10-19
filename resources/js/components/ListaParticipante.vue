@@ -50,15 +50,15 @@
             <tbody>
                 <tr v-for="(item,key) in items" :key="item.id">
                     <th  class="data" scope="row">{{key+1}}</th>
-                    <td>{{item.name}}</td>
+                    <td>{{item.nombrecompleto}}</td>
                     <td>{{item.email}}</td>
                     <td>{{item.phone}}</td>
                     <td>{{item.organization}}</td>
-                    <td  v-if="item.IS_CERTIFICATE == 1"> Si</td> <td v-else> No</td>
+                    <td  v-if="item.is_certificado == 1"> Si</td> <td v-else> No</td>
                     <td v-if="item.confirmed == 1"> Si</td> <td v-else> No</td>
                     <td>
-                        <button type="button" class="btn btn-primary" v-on:click="certificar(item.id_participant)"><i class="fas fa-certificate"></i></button>
-                        <button type="button" class="btn btn-danger" v-on:click="deleteParticipant(item.id_participant)"><i class="fas fa-trash"></i></button>
+                        <button type="button" title="Quiero Certificado" class="btn btn-primary" v-on:click="certificar(item.id_participante)"><i class="fas fa-certificate"></i></button>
+                        <button type="button" title="Eliminar Registro" class="btn btn-danger" v-on:click="deleteParticipant(item.id_participante)"><i class="fas fa-trash"></i></button>
                     </td>
                 </tr>
             </tbody>
@@ -68,6 +68,7 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
     data() {
         return {
@@ -88,8 +89,8 @@ export default {
                         var contCertificate = 0;
                         var contConfirmate = 0;
                         for (let i = 0; i < this.items.length; i++) {
-                            // console.log(this.items[i].IS_CERTIFICATE)
-                            if (this.items[i].IS_CERTIFICATE === 1) contCertificate ++;
+                            // console.log(this.items[i].is_certificado)
+                            if (this.items[i].is_certificado === 1) contCertificate ++;
                             if (this.items[i].confirmed === 1) contConfirmate ++;
                         }
 

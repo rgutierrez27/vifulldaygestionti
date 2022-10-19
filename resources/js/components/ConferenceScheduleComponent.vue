@@ -14,7 +14,7 @@
 
                             <a v-bind:class="'nav-link ' + value.clasx"
                                 v-bind:href="'#tabs-1-'+ key" data-toggle="tab" data-triangle=".nav-link-overlay"><span
-                                    class="nav-link-overlay"></span><span class="nav-link-cite">{{key==0?'Primer':(key==1?'Segundo':(key==3?'Tercer':'Cuarto'))}} Dia</span><span
+                                    class="nav-link-overlay"></span><span class="nav-link-cite">{{key==0?'Primer':(key==1?'Segundo':(key==2?'Tercer':'Cuarto'))}} Dia</span><span
                                     class="nav-link-title">{{value.date}}</span>
                             </a>
                         </li>
@@ -26,7 +26,7 @@
                                 <div class="card-group-custom card-group-corporate" id="accordion1" role="tablist"
                                     aria-multiselectable="false">
                                     <!--Bootstrap card-->
-                                    {{value.ponentes}}
+                                    <!-- {{value.ponentes}} -->
                                     <article class="card card-custom card-corporate" v-for="(element, index) in value.ponentes" :key="index">
                                         <div class="card-header" role="tab">
                                             <div class="card-title"><a class="collapsed" id="accordion1-card-head-hxapwahb"
@@ -36,20 +36,18 @@
                                                     role="button"><span class="schedule-classic"><span
                                                             class="unit unit-spacing-md align-items-center d-block d-md-flex"><span
                                                                 class="unit-left"><span class="schedule-classic-img"><img
-                                                                        src="images/schedule-01-122x122.jpg" alt=""
+                                                                        v-bind:src="element.urlPhoto" alt=""
                                                                         width="122" height="122" /></span></span><span
                                                                 class="unit-body"><span class="schedule-classic-content"><span
-                                                                        class="schedule-classic-time">9:00 am to 10:00
-                                                                        am</span><span
+                                                                        class="schedule-classic-time">{{element.datew}}</span><span
                                                                         class="schedule-classic-title heading-4">{{element.titleExposicion}}</span><span
-                                                                        class="schedule-classic-author">by <span
-                                                                            class="schedule-classic-author-name">{{element.name}}</span> - Co
-                                                                        Founder</span></span></span></span></span></a></div>
+                                                                        class="schedule-classic-author">Ponente: <span
+                                                                            class="schedule-classic-author-name">{{element.name}}</span> - {{element.university}}</span></span></span></span></span></a></div>
                                         </div>
 
                                     </article>
                                     <!-- Schedule Simple-->
-                                    <div class="schedule-classic schedule-classic-simple">
+                                    <div class="schedule-classic schedule-classic-simple d-none">
                                         <div class="schedule-classic-content">
                                             <div class="schedule-classic-img">
                                                 <svg class="svg-icon-md svg-icon-primary" role="img">
@@ -88,12 +86,22 @@ export default{
                             datetime: '2022-10-25',
                             ponentes: [
                                 {
-                                    name: 'Kevin Carlos Vargas',
+                                    name: 'Dr. Jardelino Menegat',
                                     rol: 'Supporter',
-                                    titleExposicion: 'Digital Conference 2019 Introduction',
-                                    datew: 'Octubre 25, 2022',
-                                    country: 'United States of America',
-                                    university: 'University of California'
+                                    titleExposicion: 'La educación de calidad en tiempos complejos',
+                                    datew: '17:00 - 18:00 pm',
+                                    country: 'Brasil',
+                                    university: 'Universidad La Salle, Canoas - RS',
+                                    urlPhoto: 'images/ponentes/2.jpg'
+                                },
+                                {
+                                    name: 'Dr. Carlos Alberto Gallego Monsalve - Dr. Domingo de Jesús Ríos Giraldo',
+                                    rol: 'Supporter',
+                                    titleExposicion: 'Del Humanismo, a la Acción gestora Social Comunitaria en la Universidad Católica del Oriente',
+                                    datew: '18:05 – 19:00 pm',
+                                    country: 'Colombia',
+                                    university: 'Universidad Católica del Oriente',
+                                    urlPhoto: 'images/ponentes/ponente-default.jpg'
                                 }
                             ],
                             where: 'Hall 22, Building 2, New York, United States of America'
@@ -105,12 +113,31 @@ export default{
                             datetime: '2022-10-26',
                             ponentes: [
                                 {
-                                    name: 'Robert Martin',
+                                    name: 'Dr. Julio Zurita - Dra. Judith Pino',
                                     rol: 'Supporter',
-                                    titleExposicion: 'Digital Conference 2019 Introduction',
-                                    datew: 'Octubre 25, 2022',
-                                    country: 'United States of America',
-                                    university: 'University of California'
+                                    titleExposicion: 'Experiencias de la internacionalización en la educación superior',
+                                    datew: '9:00 – 10:00 am',
+                                    country: 'Ecuador',
+                                    university: 'Universidad Católica del Ecuador',
+                                    urlPhoto: 'images/ponentes/ponente-default.jpg'
+                                },
+                                {
+                                    name: 'Dr. José Luis Retolaza Avalos',
+                                    rol: 'Supporter',
+                                    titleExposicion: 'La Quiebra del Modelo de Economía Clásico: A la Búsqueda de un Nuevo Paradigma',
+                                    datew: '10:00 – 11:00 am',
+                                    country: 'España',
+                                    university: 'Universidad de Deusto',
+                                    urlPhoto: 'images/ponentes/5.jpg'
+                                },
+                                {
+                                    name: 'Dr. Hernán Vera Rodríguez',
+                                    rol: 'Supporter',
+                                    titleExposicion: '̈La situación de los trabajadores en Puerto Rico durante la pandemia provocada por el COVID-19: ¿Trabajo decente o precariedad laboral?',
+                                    datew: '15:00 – 16:00 pm',
+                                    country: 'Puerto Rico',
+                                    university: 'Pontificia Universidad Católica de Puerto Rico',
+                                    urlPhoto: 'images/ponentes/ponente-default.jpg'
                                 }
                             ],
                             where: 'Hall 22, Building 2, New York, United States of America'
@@ -122,12 +149,22 @@ export default{
                             datetime: '2022-10-27',
                             ponentes: [
                                 {
-                                    name: 'Nelson Martin',
+                                    name: 'MSc. Mónica Ximena Guzmán Rojo',
                                     rol: 'Supporter',
-                                    titleExposicion: 'Digital Conference 2019 Introduction',
-                                    datew: 'Octubre 25, 2022',
-                                    country: 'United States of America',
-                                    university: 'University of California'
+                                    titleExposicion: 'Acción por el Clima',
+                                    datew: '09:00 – 10:00 am',
+                                    country: 'Bolivia',
+                                    university: 'Universidad Católica Boliviana San Pablo',
+                                    urlPhoto: 'images/ponentes/ponente-default.jpg'
+                                },
+                                {
+                                    name: 'Dr. Marco Antonio Quesada Chaves',
+                                    rol: 'Supporter',
+                                    titleExposicion: 'El aporte de la investigación en Educación Religiosa para el desarrollo de una educación inclusiva, equitativa y de calidad',
+                                    datew: '15:00 – 16:00 pm',
+                                    country: 'Costa Rica',
+                                    university: 'Universidad Católica de Costa Rica',
+                                    urlPhoto: 'images/ponentes/3.jpg'
                                 }
                             ],
                             where: 'Hall 22, Building 2, New York, United States of America'
@@ -136,19 +173,48 @@ export default{
                             title: 'Digital Conference 2019 Introduction',
                             clasx: 'nav-link-secodanry',
                             date: 'Octubre 28, 2022',
-                            datetime: '2022-10-27',
+                            datetime: '2022-10-28',
                             ponentes: [
                                 {
-                                    name: 'Kevin Martin',
+                                    name: 'Dr. José Joaquín Piña Mondragón',
                                     rol: 'Supporter',
-                                    titleExposicion: 'Digital Conference 2019 Introduction',
-                                    datew: 'Octubre 25, 2022',
-                                    country: 'United States of America',
-                                    university: 'University of California'
+                                    titleExposicion: 'Conservar y utilizar sosteniblemente los océanos, los mares y los recursos marinos para el desarrollo sostenible',
+                                    datew: '09:00 – 10:00 am',
+                                    country: 'México',
+                                    university: 'Universidad de La Salle Querétaro',
+                                    urlPhoto: 'images/ponentes/ponente-default.jpg'
+                                },
+                                {
+                                    name: 'Dra. Vania Elisabete Schneider',
+                                    rol: 'Supporter',
+                                    titleExposicion: 'Agua, Saneamiento, Salud y Desafíos a la sustentabilidad planetaria',
+                                    datew: '15:00 – 16:00 pm',
+                                    country: 'Brasil',
+                                    university: 'Universidad de Caxias Do Sul',
+                                    urlPhoto: 'images/ponentes/ponente-default.jpg'
+                                },
+                                {
+                                    name: 'Arq. Horacio Cangelosi',
+                                    rol: 'Supporter',
+                                    titleExposicion: 'Hábitat Saludable y Sustentable',
+                                    datew: '16:00 – 17:00 pm',
+                                    country: 'Argentina',
+                                    university: 'Federación Internacional de Sociedades Científicas',
+                                    urlPhoto: 'images/ponentes/1.jpg'
+                                },
+                                {
+                                    name: 'Dr. Ing. Paul Sharratt PhD',
+                                    rol: 'Supporter',
+                                    titleExposicion: 'Precio del Medio Ambiente”',
+                                    datew: '17:00 – 17:45 pm',
+                                    country: 'Inglaterra',
+                                    university: 'Instituto de Investigaciones Singapur',
+                                    urlPhoto: 'images/ponentes/9.jpg'
                                 }
                             ],
                             where: 'Hall 22, Building 2, New York, United States of America'
-                        }
+                        },
+
                     ]
                 }
             ]

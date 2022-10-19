@@ -57,7 +57,7 @@
                 </div>
             </div>
             <!-- Thumbnail Video Link-->
-            <div class="video-link-wrapper">
+            <div class="video-link-wrapper d-none">
                 <div class="unit align-items-center">
                     <div class="unit-body text-right">
                         <h5><span class="big">Ver Video<br> Promocional</span></h5>
@@ -233,59 +233,259 @@
                 <h6 class="text-secondary">Nuestros Ponentes</h6>
                 <h3>Conoce a nuestros ponentes.</h3>
                 <div class="row row-30">
-                    <div class="col-md-6 col-lg-4">
+
+                    <?php
+                        $ponentes[] = new stdClass();
+                        $ponentes[0]->name = 'Dr. Jardelino Menegat';
+                        $ponentes[0]->role = 'Investigador';
+                        $ponentes[0]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[0]->description = 'La educación de calidad en tiempos complejos';
+                        $ponentes[0]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[1]->name = 'Dr. Carlos Alberto Gallego Monsalve';
+                        $ponentes[1]->role = 'Investigador';
+                        $ponentes[1]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[1]->description = 'Colombia - Universidad Católica del Oriente';
+                        $ponentes[1]->facebook = '#';
+
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[2]->name = 'Dr. Domingo de Jesús Ríos Giraldot';
+                        $ponentes[2]->role = 'Investigador';
+                        $ponentes[2]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[2]->description = 'Colombia - Universidad Católica del Oriente';
+                        $ponentes[2]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[3]->name = 'Dr. Julio Zurita';
+                        $ponentes[3]->role = 'Investigador';
+                        $ponentes[3]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[3]->description = 'Ecuador - Universidad Católica del Ecuador';
+                        $ponentes[3]->facebook = '#';
+
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[4]->name = 'Dra. Judith Pino';
+                        $ponentes[4]->role = 'Investigador';
+                        $ponentes[4]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[4]->description = 'Ecuador - Universidad Católica del Ecuador';
+                        $ponentes[4]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[5]->name = 'Dr. José Luis Retolaza Avalos';
+                        $ponentes[5]->role = 'Investigador';
+                        $ponentes[5]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[5]->description = 'España - Universidad de Deusto';
+                        $ponentes[5]->facebook = '#';
+
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[6]->name = 'Sra. Marina Bustamante';
+                        $ponentes[6]->role = 'Investigador';
+                        $ponentes[6]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[6]->description = '';
+                        $ponentes[6]->facebook = '#';
+
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[7]->name = 'Lic. Hernán Alonso Gonzales Valdivia';
+                        $ponentes[7]->role = 'Investigador';
+                        $ponentes[7]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[7]->description = '';
+                        $ponentes[7]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[8]->name = 'Dr. José Raymundo Reyes Rodríguez';
+                        $ponentes[8]->role = 'Investigador';
+                        $ponentes[8]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[8]->description = '';
+                        $ponentes[8]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[9]->name = 'Dr. Oscar Humberto Moreno Rubiños';
+                        $ponentes[9]->role = 'Investigador';
+                        $ponentes[9]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[9]->description = '';
+                        $ponentes[9]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[10]->name = 'Ing. Luis Fernando Rodríguez Salvador';
+                        $ponentes[10]->role = 'Investigador';
+                        $ponentes[10]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[10]->description = '';
+                        $ponentes[10]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[11]->name = 'Dra. Haydee Maricela Mora Amezcua';
+                        $ponentes[11]->role = 'Investigador';
+                        $ponentes[11]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[11]->description = '';
+                        $ponentes[11]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[12]->name = 'Dr. Hernán Vera Rodríguez';
+                        $ponentes[12]->role = 'Investigador';
+                        $ponentes[12]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[12]->description = 'Puerto Rico - Pontificia Universidad Católica de Puerto Rico';
+                        $ponentes[12]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[13]->name = 'Dra. Delia Izaguirre';
+                        $ponentes[13]->role = 'Investigador';
+                        $ponentes[13]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[13]->description = '';
+                        $ponentes[13]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[14]->name = 'Ing. Fernando Saldaña Mila';
+                        $ponentes[14]->role = 'Investigador';
+                        $ponentes[14]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[14]->description = '';
+                        $ponentes[14]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[15]->name = 'Mg. Andrea Machain';
+                        $ponentes[15]->role = 'Investigador';
+                        $ponentes[15]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[15]->description = '';
+                        $ponentes[15]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[16]->name = 'MSc. Mónica Ximena Guzmán Rojo';
+                        $ponentes[16]->role = 'Investigador';
+                        $ponentes[16]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[16]->description = 'Bolivia - Universidad Católica Boliviana San Pablo';
+                        $ponentes[16]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[17]->name = 'Dr. Marco Antonio Quesada Chaves';
+                        $ponentes[17]->role = 'Investigador';
+                        $ponentes[17]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[17]->description = 'Costa Rica - Universidad Católica de Costa Rica';
+                        $ponentes[17]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[18]->name = 'Dra. Delia Margarita Izaguirre Torres.';
+                        $ponentes[18]->role = 'Investigador';
+                        $ponentes[18]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[18]->description = '';
+                        $ponentes[18]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[19]->name = 'Dra PhD Lola Rojas Infantas.';
+                        $ponentes[19]->role = 'Investigador';
+                        $ponentes[19]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[19]->description = '';
+                        $ponentes[19]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[20]->name = 'Mg Ing. Fernando Arístides Saldaña Milla.';
+                        $ponentes[20]->role = 'Investigador';
+                        $ponentes[20]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[20]->description = '';
+                        $ponentes[20]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[21]->name = 'MSc. María Pilar Ruiz Santillán.';
+                        $ponentes[21]->role = 'Investigador';
+                        $ponentes[21]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[21]->description = '';
+                        $ponentes[21]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[22]->name = 'Mg Genara Antonia Castillo Contreras';
+                        $ponentes[22]->role = 'Investigador';
+                        $ponentes[22]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[22]->description = '';
+                        $ponentes[22]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[23]->name = 'Dr. José Joaquín Piña Mondragón';
+                        $ponentes[23]->role = 'Investigador';
+                        $ponentes[23]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[23]->description = 'México - Universidad Marista de Querétaro';
+                        $ponentes[23]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[24]->name = 'Mg. Amado Abdías Solano Sare';
+                        $ponentes[24]->role = 'Investigador';
+                        $ponentes[24]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[24]->description = '';
+                        $ponentes[24]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[25]->name = 'Dra. Yesenia Coronel Huamán';
+                        $ponentes[25]->role = 'Investigador';
+                        $ponentes[25]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[25]->description = '';
+                        $ponentes[25]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[26]->name = 'Ing. Roger Rodríguez Rojas';
+                        $ponentes[26]->role = 'Investigador';
+                        $ponentes[26]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[26]->description = 'Ing. Roger Rodríguez Rojas';
+                        $ponentes[26]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[27]->name = 'Mg. Angel Francisco Polo Campos';
+                        $ponentes[27]->role = 'Investigador';
+                        $ponentes[27]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[27]->description = '';
+                        $ponentes[27]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[28]->name = 'Dra. Vania Elisabete Schneider';
+                        $ponentes[28]->role = 'Investigador';
+                        $ponentes[28]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[28]->description = 'Brasil - Universidad de Caxias Do Sul';
+                        $ponentes[28]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[29]->name = 'Arq. Horacio Cangelosi';
+                        $ponentes[29]->role = 'Investigador';
+                        $ponentes[29]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[29]->description = 'Argentina - Federación Internacional de Sociedades Científicas';
+                        $ponentes[29]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[30]->name = 'Dr. Ing. Paul Sharratt PhD';
+                        $ponentes[30]->role = 'Investigador';
+                        $ponentes[30]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[30]->description = 'Inglaterra - Instituto de Investigaciones Singapur';
+                        $ponentes[30]->facebook = '#';
+
+                        $ponentes[] = new stdClass();
+                        $ponentes[31]->name = 'Dr. Francisco Alejandro Espinoza Polo';
+                        $ponentes[31]->role = 'Investigador';
+                        $ponentes[31]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[31]->description = '';
+                        $ponentes[31]->facebook = '#';
+
+
+                    ?>
+
+                    @foreach ($ponentes as $ponente)
+                    <div class="col-md-6 col-lg-3">
                         <div>
                             <!-- Speaker-->
                             <div class="speaker">
                                 <div class="speaker-img" data-triangle=".speaker-overlay">
-                                    <div class="speaker-overlay"></div><a href="#"><img src="images/speaker01.jpg"
+                                    <div class="speaker-overlay"></div><a href="#"><img src="{{$ponente->image}}"
                                             alt="" width="330" height="354" /></a>
                                     <ul class="speaker-social-list">
                                         <li><a class="icon icon-xs fa-linkedin"
                                                 href="https://www.linkedin.com/in/ricardoarbocco/"></a></li>
                                     </ul>
                                 </div>
-                                <h5 class="speaker-title"><a href="#">Ricardo Arboccó Illescas</a></h5>
-                                <p class="speaker-position">Director Corporativo de Tecnología & Sistemas - CIO / CTO en
-                                    Grupo Gloria & CEO @Centro</p>
+                                <h5 class="speaker-title"><a href="#">{{$ponente->name}}</a></h5>
+                                <p class="speaker-position">{{$ponente->description}}</p>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div>
-                            <!-- Speaker-->
-                            <div class="speaker">
-                                <div class="speaker-img" data-triangle=".speaker-overlay">
-                                    <div class="speaker-overlay"></div><a href="#"><img src="images/speaker02.jpg"
-                                            alt="" width="330" height="354" /></a>
-                                    <ul class="speaker-social-list">
-                                        <li><a class="icon icon-xs fa-linkedin"
-                                                href="https://www.linkedin.com/in/patricia-fuentes-b8b0812a/"></a></li>
-                                    </ul>
-                                </div>
-                                <h5 class="speaker-title"><a href="#">PATRICIA FUENTES</a></h5>
-                                <p class="speaker-position">Gerente de Sistemas / Head of IT Perú en The Adecco Group</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-4">
-                        <div>
-                            <!-- Speaker-->
-                            <div class="speaker">
-                                <div class="speaker-img" data-triangle=".speaker-overlay">
-                                    <div class="speaker-overlay"></div><a href="#"><img
-                                            src="images/speaker-05-330x354.jpg" alt="" width="330"
-                                            height="354" /></a>
-                                    <ul class="speaker-social-list">
-                                        <li><a class="icon icon-xs fa-linkedin"
-                                                href="https://www.linkedin.com/in/yolanda-cuzma-1a02b721/"></a></li>
-                                    </ul>
-                                </div>
-                                <h5 class="speaker-title"><a href="#">ELIZABET YOLANDA CUZMA CACERES</a></h5>
-                                <p class="speaker-position">Gerente de sistemas en Mibanco, banco de la Microempresa </p>
-                            </div>
-                        </div>
-                    </div>
+
+                    @endforeach
 
                 </div>
 
@@ -295,7 +495,8 @@
 @endsection
 
 @section('SectionConferenceSchedule')
-    <conference-schedule></conference-schedule>
+    @include('pages.shedule.cronograma')
+    {{-- <conference-schedule></conference-schedule> --}}
 @endsection
 
 @section('SectionOfficialSponsors')
@@ -305,62 +506,20 @@
                 <h6>Nuestros Sponsor</h6>
                 <h3>Sponsor Oficiales</h3>
                 <div class="row row-30 row-lg-50 justify-content-center">
+                    @for ($i = 1; $i < 8; $i++)
                     <div class="col-sm-5 col-lg-3">
                         <div class="wow">
                             <div>
                                 <!-- Sponsor--><a class="sponsor" href="#" data-triangle=".sponsor-overlay">
                                     <div class="sponsor-overlay"></div>
-                                    <div class="sponsor-img"><img src="images/sponsor01.png" alt=""
-                                            width="117" height="70" />
+                                    <div class="sponsor-img"><img src="images/sponsors/{{$i}}.png" alt=""
+                                            width="300" height="70" />
                                     </div>
                                 </a>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-5 col-lg-3">
-                        <div class="wow">
-                            <div>
-                                <!-- Sponsor--><a class="sponsor" target="blank"
-                                    href="https://www.facebook.com/ISACAUNT" data-triangle=".sponsor-overlay">
-                                    <div class="sponsor-overlay"></div>
-                                    <div class="sponsor-img"><img src="images/sponsor02.png" alt=""
-                                            width="120" height="83" />
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-lg-3">
-                        <div class="wow">
-                            <div>
-                                <!-- Sponsor--><a class="sponsor" target="blank"
-                                    href="https://www.instagram.com/d_bambuu/" data-triangle=".sponsor-overlay">
-                                    <div class="sponsor-overlay"></div>
-                                    <div class="sponsor-img"><img src="images/sponsor03.png" alt=""
-                                            width="119" height="33" />
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-5 col-lg-3">
-                        <div class="wow">
-                            <div>
-                                <!-- Sponsor--><a class="sponsor" target="blank"
-                                    href="https://www.instagram.com/d_bambuu/" data-triangle=".sponsor-overlay">
-                                    <div class="sponsor-overlay"></div>
-                                    <div class="sponsor-img"><img src="images/sponsor04.png" alt=""
-                                            width="119" height="33" />
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-12">
-                        <p class="font-weight-sbold font-secondary"><span class="wow" data-splitting>
-                                No lo dudes, contáctalos para obtener una mejor ayuda y servicio de calidad</span>
-                        </p>
-                    </div>
+                    @endfor
                 </div>
             </div>
         </div>
@@ -368,5 +527,5 @@
 @endsection
 
 @section('scripts')
-<script src="/js/app.js" async defer></script>
+{{-- <script src="/js/app.js" async defer></script> --}}
 @endsection

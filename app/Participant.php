@@ -9,8 +9,21 @@ use Illuminate\Database\Eloquent\Model;
 
 class Participant extends Authenticatable implements MustVerifyEmail
 {
-    public $table = "participants";
+    protected $connection = 'mysql_erp_integrado';
+    public $table = "aca_congreso_participantes";
     public $timestamps = true;
-    protected $primaryKey = 'id_participant';
-    protected $fillable = ['id_participant','name','email','phone','organization','confirmed','confirmation_code','IS_DELETE','IS_CERTIFICATE'];
+    protected $primaryKey = 'id_participante';
+    protected $fillable = [
+        'id_participante' ,
+        'persona',
+        'nombre_evento',
+        'codigo_evento',
+        'organization' ,
+        'confirmed' ,
+        'confirmation_code' ,
+        'is_delete' ,
+        'is_certificado',
+        'created_at',
+        'updated_at',
+    ];
 }

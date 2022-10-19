@@ -12,7 +12,7 @@
 <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(/images/bg-breadcrumbs-01-1894x424.jpg);">
     <div class="container">
       <ul class="breadcrumbs-custom-path">
-        <li><a href="/">VI Full Day</a></li>
+        <li><a href="/">V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA</a></li>
         <li class="active">Participantes</li>
       </ul>
       <h3 class="breadcrumbs-custom-title">Lista Participantes</h3>

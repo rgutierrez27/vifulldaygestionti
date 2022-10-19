@@ -3364,12 +3364,29 @@ input:-webkit-autofill ~ .form-validation {
 	font-weight: 500;
 	line-height: 31px;
 	color: #8c8c9a;
-	background-color: #f4f2ee;
+	background-color: #fffefe;
 	background-image: none;
 	border-radius: 0;
 	-webkit-appearance: none;
 	transition: .3s ease-in-out;
-	border: 1px solid #f4f2ee;
+	border: 1px solid #605e5b;
+}
+
+.form-input:disabled {
+	display: block;
+	width: 100%;
+	min-height: 78px;
+	padding: 23px 36px;
+	font-size: 18px;
+	font-weight: 500;
+	line-height: 31px;
+	color: #8c8c9a;
+    background-color: #f4f2ee;
+	background-image: none;
+	border-radius: 0;
+	-webkit-appearance: none;
+	transition: .3s ease-in-out;
+	border: 1px solid #b8b6b4;
 }
 
 .form-input:focus {
@@ -5220,7 +5237,7 @@ textarea.form-input {
 	margin-left: auto;
 	margin-right: auto;
 	padding: 30px;
-	background-color: #ffffff;
+	background-color: #0a0a0a;
 	opacity: .3;
 }
 

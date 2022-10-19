@@ -287,8 +287,8 @@
         <div class="course">
             <div class="course-preview">
                 <h6>Evento</h6>
-                <h2>VI Full Day de Gestión de TI</h2>
-                <a href="https://www.facebook.com/events/2846043135644445/" target="_blank">Ver evento <i class="fas fa-chevron-right"></i></a>
+                <h2>V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA</h2>
+                <a href="#" target="_blank">Ver Congreso <i class="fas fa-chevron-right"></i></a>
             </div>
             <div class="course-info">
                 <div class="progress-container">
@@ -300,7 +300,8 @@
                 <h6>Gracias por registarte </h6>
                 <h2>{{$names}}</h2>
                 <h5>Porfavor haz click en continuar para verificar su correo</h5>
-                <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: info@vifulldaygestionti.com</span>
+                <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: vrinvestigacion@uct.edu.pe</span>
+                <br>
 
                 <a href="{{ url('/register/verify/' . $confirmation_code) }}" target="_blank">
                     <button  class="btn">Continuar</button>
@@ -313,8 +314,8 @@
 
 
     <div class="floating-text">
-        Organizado por la <a href="https://www.facebook.com/PromoUNTXXI" target="_blank">#PromocionXXI</a> - Escuela de Ingeniería de Sistemas <br>
-        Universidad Nacional de Trujillo
+        Organizado por la <a href="#" target="_blank">Universidad Católica de trujillo</a> -  <br>
+        Gerencia de TI
     </div>
 
 </body>

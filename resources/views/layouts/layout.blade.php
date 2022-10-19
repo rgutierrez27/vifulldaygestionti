@@ -2,7 +2,7 @@
 <html class="wide" lang="en">
 
 <head>
-    <title>VI Full Day de Gestión de TI</title>
+    <title>V Congreso Mundial de Investigación Científica</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -75,9 +75,9 @@
                                 <div class="rd-navbar-brand">
                                     <!--Brand--><a class="brand" href="/"><img class="brand-logo-dark"
                                             src="/images/logo-default.png" srcset="/images/logo-default@2x.png 2x"
-                                            alt="VI Full Day de Gestión de TI" /><img class="brand-logo-light"
+                                            alt="V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA " /><img class="brand-logo-light"
                                             src="/images/logo-inverse.png" srcset="/images/logo-inverse@2x.png 2x"
-                                            alt="VI Full Day de Gestión de TI" /></a>
+                                            alt="V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA " /></a>
                                 </div>
                             </div>
                             <!-- Rd Navbar Navigation-->
@@ -118,16 +118,13 @@
                 <div class="row row-30">
                     <div class="col-xs-10 col-lg-4 align-self-center"><a class="brand" href="/"><img
                                 class="brand-logo-light" src="/images/logo-inverse-big.png"
-                                srcset="/images/logo-inverse-big@2x.png 2x" alt="VI Full Day de Gestión de TI"></a>
+                                srcset="/images/logo-inverse-big@2x.png 2x" alt="V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA"></a>
                     </div>
                     <div class="col-xs-10 col-sm-6 col-lg-4">
                         <h5><span class="big font-weight-sbold">Detalle del evento</span></h5>
                         <div class="event-detail">
-                            <p class="event-detail-time big">
-                                <time data-splitting datetime="2019-01-05">Febrero 20, 2021</time>
-                            </p>
-                            <p class="event-detail-address big" data-splitting>Evento realizado por la Promoción XXI de
-                                la Escuela de Ingeniería de Sistemas de la UNT, via Zoom</p>
+
+                            <p class="event-detail-address big" data-splitting>Este evento se desarrollará los días 25 al 28 de octubre de 2022, mediante medios digitales y está dirigido a docentes, investigadores, estudiantes, profesionales y representantes de las diferentes instituciones a nivel nacional e internaciona</p>
                         </div>
                     </div>
                     <div class="col-xs-10 col-sm-6 col-lg-4">
@@ -139,7 +136,7 @@
                             <ul class="list-inline list-inline-xs">
                                 <li data-wow-delay=".2s"><a class="icon icon-rect icon-xs icon-white fa-facebook"
                                         target="blank"
-                                        href="https://www.facebook.com/VI-Full-Day-de-Gestion-de-TI-100634515326022"
+                                        href="https://www.facebook.com/ucetista"
                                         data-triangle=".icon-rect-overlay">
                                         <div class="icon-rect-overlay"></div>
                                     </a></li>
@@ -155,7 +152,7 @@
         <footer class="section footer-classic context-dark">
             <div class="container">
                 <p class="rights"><span>Copyright&nbsp;</span><span>&copy;&nbsp;</span><span
-                        class="copyright-year"></span><span>&nbsp;</span><span>by</span> <a href="#">Nortec</a>
+                        class="copyright-year"></span><span>&nbsp;</span><span>•</span> <a href="https://uct.edu.pe/" target="_blank">Universidad Católica de Trujillo | Gerencia de TI</a>
                 </p>
             </div>
         </footer>
