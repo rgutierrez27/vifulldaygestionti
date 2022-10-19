@@ -472,11 +472,11 @@
                             <!-- Speaker-->
                             <div class="speaker">
                                 <div class="speaker-img" data-triangle=".speaker-overlay">
-                                    <div class="speaker-overlay"></div><a href="#"><img src="{{$ponente->image}}"
+                                    <div class="speaker-overlay"></div><a href="javascript:void(0);"><img src="{{$ponente->image}}"
                                             alt="" width="330" height="354" /></a>
                                     <ul class="speaker-social-list">
                                         <li><a class="icon icon-xs fa-linkedin"
-                                                href="https://www.linkedin.com/in/ricardoarbocco/"></a></li>
+                                                href="javascript:void(0);"></a></li>
                                     </ul>
                                 </div>
                                 <h5 class="speaker-title"><a href="#">{{$ponente->name}}</a></h5>
