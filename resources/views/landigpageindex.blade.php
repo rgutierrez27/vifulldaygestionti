@@ -183,8 +183,8 @@
                                 </div>
                                 <div class="unit-body">
                                     <h5>Actividades</h5>
-                                    <p>02 Conversatorios</p>
-                                    <p>03 Talleres</p>
+                                    <p>• 02 Conversatorios <br> • 03 taller <br> • Concurso de Gregorio Mendel <br> • Jornada de investiagcion</p>
+                                    {{-- <p>03 Talleres</p> --}}
                                 </div>
                             </div>
                         </li>
@@ -203,8 +203,18 @@
                                 </div>
                             </div>
                         </li>
-                    </ul><a class="button button-primary" href="/regitroform"
-                        data-triangle=".button-overlay"><span>Inscribete</span><span class="button-overlay"></span></a>
+                    </ul>
+                    <div class="row">
+                        <div class="col-12">
+                            <a class="button button-primary" href="/regitroform"
+                        data-triangle=".button-overlay"><span>Inscribete</span><span class="button-overlay"></span>
+                            </a>
+                            <a class="button button-primary" href="https://drive.google.com/drive/folders/13R-E2KVxkT3KI7vc1oSh8ptNQFadxYQZ" target="_blank" style="margin-top: 0px !important; margin-left: 10px !important;"
+                                data-triangle=".button-overlay"><span>Descargar Programa</span><span class="button-overlay"></span>
+                            </a>
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-md-10 col-lg-6 col-xl-7 text-md-right">
                     <!-- Image Box-->
