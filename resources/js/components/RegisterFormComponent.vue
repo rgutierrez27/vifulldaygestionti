@@ -37,25 +37,28 @@
 
 
                 <div class="col-md-12 col-lg-8" v-show="issucess == null" >
-                    <h4>Registrate para poder participar</h4>
+                    <h4 class="mb-5">Registrate para poder participar</h4>
 
                     <!--Mailform-->
                     <form v-on:submit.prevent="submitForm" >
                         <div class="row row-narrow row-20">
                             <div class="col-md-6">
-                                <div class="form-wrap">
-                                    <label for="contact-name">Tipo de documento</label>
-                                    <select name="" disabled id="">
-                                        <option value="" selected>DNI</option>
+                                <div class="form-wrap2">
+                                    <label for="contact-name2">Tipo de documento</label>
+                                    <select name="" id="" v-model="typeDocumentTemp" style="width: 100%; min-height: 78px; padding: 8%;">
+                                        <option value="01">DNI</option>
+                                        <option value="05">CARNET DE EXTRANJERIA</option>
+                                        <!-- <option value="06">REG. UNICO DE CONTRIBUYENTES</option> -->
+                                        <option value="07">PASAPORTE</option>
                                     </select>
                                 <!-- <label class="form-label" for="contact-name">Nombre y apellidos</label> -->
                                 </div>
                             </div>
                             <div class="col-md-6">
-                                <label for="labelContact-dni"> DNI</label>
+                                <label for="labelContact-dni"> {{typeDocumentTemp=='01'?'DNI':(typeDocumentTemp=='05'?'CARNET DE EXTRANJERIA':(typeDocumentTemp=='06'?'RUC':'PASAPORTE'))}}</label>
                                 <div class="form-wrap">
                                     <!-- <label class="form-label" for="contact-dni2">DNI</label> -->
-                                <input class="form-input" v-model="dniTemp" id="contact-dni" type="text" name="dni" autocomplete="chrome-off" maxlength="8" @keydown="validarDNI()" required>
+                                <input class="form-input" v-model="dniTemp" id="contact-dni" type="text" name="dni" autocomplete="chrome-off"  @keydown="validarDNI()" required>
 
                                 </div>
                             </div>
@@ -148,8 +151,10 @@ export default {
             disabled: true,
             existData: 1, //1: No se hace consulta, 2: Se hace consulta y no existe, 3: Se hace consulta y existe
             dniTemp: '',
+            typeDocumentTemp: '01',
             messageError: 'Porfavor valida correctamente los datos ingresados',
             form:{
+                typeDocument: '',
                 dni:'',
                 names1: null,
                 names2: null,
@@ -205,20 +210,29 @@ export default {
         },
 
         validarDNI(){
+            let longitudStringPermitida = 0;
+            if (this.typeDocumentTemp == '01')
+                longitudStringPermitida = 8
+            if (this.typeDocumentTemp == '05' || this.typeDocumentTemp == '07')
+                longitudStringPermitida = 12
+            if (this.typeDocumentTemp == '06')
+                longitudStringPermitida = 11
+
 
             var letters = this.dniTemp.length;
-            if (letters > 8) {
+            if (letters > longitudStringPermitida) {
                 this.dniTemp = this.dniTemp.substring(0,8);
             }
             letters = letters + 1;
-            if (letters == 8) {
+            if (letters == longitudStringPermitida) {
                 this.LoadingSearchDNI = true;
                 setTimeout(async () => {
-                    const resp = await axios.get(`/validardni/${this.dniTemp}`)
+                    const resp = await axios.get(`/validardni/${this.dniTemp}/${this.typeDocumentTemp}`);
                     // validar si objeto esta vacio
                     if (!resp.data.error) {
                         if (Object.keys(resp.data.data).length > 0){
                             this.existData = 3  // 3: Se hace consulta y existe
+                            this.form.typeDocument = this.typeDocumentTemp
                             this.form.dni = this.dniTemp
                             this.form.names1 = resp.data.data.nombre1
                             this.form.names2 = resp.data.data.nombre2
@@ -231,6 +245,7 @@ export default {
                         }else{
                             this.existData = 2 // 2: Se hace consulta y no existe
                             this.disabled= false;
+                            this.form.typeDocument = this.typeDocumentTemp
                             this.form.dni = this.dniTemp
                             this.form.names1 = ""
                             this.form.names2 = ""
@@ -243,6 +258,7 @@ export default {
                         this.LoadingSearchDNI = false;
                     }else{ // Error de validacion
                         this.existData = 2
+                        this.form.typeDocument = this.typeDocumentTemp
                         this.form.dni = this.dniTemp
                         this.form.names1 = ""
                         this.form.names2 = ""
@@ -272,6 +288,10 @@ export default {
             return false;
             }
 
+        },
+        changEvent(){
+            console.log('dsfsdf');
+            alert(this.typeDocumentTemp);
         }
     },
 }

@@ -49,15 +49,27 @@ class ParticipantController extends Controller
         $phone =  $request->phone;
         $organization = $request->organization;
         $is_certificate = $request->is_certificate;
+        $tipoDocumento = $request->typeDocument;
 
 
-        if (!is_numeric($dni)) {
-            return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false], 400);
-        }
+        if ($tipoDocumento == '01') {
+            if (!is_numeric($dni)) {
+                return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false]);
+            }
 
-        // VALIDAR longintud de dni
-        if (strlen($dni) != 8) {
-            return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false], 400);
+            // VALIDAR longintud de dni
+            if (strlen($dni) != 8) {
+                return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false]);
+            }
+        }else if($tipoDocumento == '05' || $tipoDocumento == '07'){
+            // if (strlen($dni) != 12) {
+            //     return response()->json(['error' => true, 'message' => 'Numero de document no valido', "flag" => false]);
+            // }
+        }else if($tipoDocumento == '06'){
+            if (strlen($dni) != 11) {
+                return response()->json(['error' => true, 'message' => 'RUC no valido', "flag" => false]);
+            }
+
         }
 
         $persona =  PersonaUCT::where('numerodocumento', $dni)->first();
@@ -75,7 +87,7 @@ class ParticipantController extends Controller
                     'direccion' => '',
                     'email' => $email,
                     'celular' => $phone,
-                    'tipodocumento' => '01',
+                    'tipodocumento' => $tipoDocumento,
                     'estadocivil' => '02',
                     'niveleducativo' => '07',
                     'tipovia' => null,
@@ -205,16 +217,29 @@ class ParticipantController extends Controller
         return response()->json(["error"=>false,'infoParcticipant' => $infoParcticipant], 200);
     }
 
-    public function validardni($dni){
+    public function validardni($dni, $tipoDocumento){
 
-        if (!is_numeric($dni)) {
-            return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false]);
+
+        if ($tipoDocumento == '01') { // DNI
+            if (!is_numeric($dni)) {
+                return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false]);
+            }
+
+            // VALIDAR longintud de dni
+            if (strlen($dni) != 8) {
+                return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false]);
+            }
+        }else if($tipoDocumento == '05' || $tipoDocumento == '07'){// Carnet de extranjeria o Pasaporte
+            // if (strlen($dni) != 12) {
+            //     return response()->json(['error' => true, 'message' => 'Numero de document no valido', "flag" => false]);
+            // }
+        }else if($tipoDocumento == '06'){ // RUC
+            if (strlen($dni) != 11) {
+                return response()->json(['error' => true, 'message' => 'RUC no valido', "flag" => false]);
+            }
+
         }
 
-        // VALIDAR longintud de dni
-        if (strlen($dni) != 8) {
-            return response()->json(['error' => true, 'message' => 'DNI no valido', "flag" => false]);
-        }
 
         $persona =  PersonaUCT::where('numerodocumento', $dni)->first();
 

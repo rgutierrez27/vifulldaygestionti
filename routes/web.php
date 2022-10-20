@@ -35,6 +35,6 @@ Route::post('/deleteParticipant', 'ParticipantController@deleteParticipant');
 
 Route::get('/sorteo/E7F24D17EF9F857DB0E14CE95F3DBD1CEE08AF110945DD0CF5309DDC787B77C970B1C6D7C5E4723B038349EFC8778E6546F9F653F6A784DE0EB8FFC4D50C0DA4', 'ParticipantController@indexSorteo');
 
-Route::get('validardni/{dni}', 'ParticipantController@validardni');
+Route::get('validardni/{dni}/{tipoDocumento}', 'ParticipantController@validardni');
 
 Route::get('/sorteoIframe', [ParticipantController::class, 'sorteoIframe'])->name('iframesorteo');;

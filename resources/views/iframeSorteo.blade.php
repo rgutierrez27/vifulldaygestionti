@@ -211,7 +211,7 @@
                                     // const element = array[index];
                                     cantParticipant++;
                                     var objeto =   {
-                                        name: datos.infoParcticipant[index].name + ' - '+datos.infoParcticipant[index].email
+                                        name: datos.infoParcticipant[index].nombrecompleto + ' - '+datos.infoParcticipant[index].email
                                     }
 
                                         msa.push(objeto);

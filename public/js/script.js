@@ -42,7 +42,7 @@
       wow:                     $( '.wow' ),
       maps:                    $( '.google-map-container' ),
       dataSplitting:           $('[data-splitting]'),
-      selectFilter:            $("select"),
+      selectFilter:            [], //$("select"),
       slick:                   $('.slick-slider'),
       swiper:                  document.querySelectorAll( '.swiper-container' ),
       counter:                 document.querySelectorAll( '.counter' ),
