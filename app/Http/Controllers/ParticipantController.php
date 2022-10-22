@@ -211,7 +211,7 @@ class ParticipantController extends Controller
                 'apellidoPaterno' => $persona->apellidopaterno,
                 'apellidoMaterno' => $persona->apellidomaterno,
                 'email' => $persona->email,
-                'telefono' => $persona->telefono,
+                'telefono' => $persona->celular,
             ];
             return  response()->json(["error" => false, 'data' => $data], 200);
         } else {

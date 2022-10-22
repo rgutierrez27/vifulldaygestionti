@@ -113,14 +113,14 @@
                             <div class="col-md-6">
                                 <div class="form-wrap">
                                     <label for="contact-email">E-mail</label>
-                                    <input class="form-input"  v-model="form.email"  id="contact-email" type="email" name="email" required>
+                                    <input class="form-input"  v-model="form.email"  id="contact-email" type="email" name="email" :disabled="disableInputEmail" required>
                                     <!-- <label class="form-label" for="contact-email">E-mail</label> -->
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-wrap">
                                     <label for="contact-phone">Numero Celular</label>
-                                    <input class="form-input"  v-model="form.phone"  id="contact-phone" type="text" name="phone" @keydown="filterKey" maxlength="9" required>
+                                    <input class="form-input"  v-model="form.phone"  id="contact-phone" type="text" name="phone" :disabled="disableInputPhone" @keydown="filterKey" maxlength="9" required>
                                     <!-- <label class="form-label" for="contact-phone">Numero Celular</label> -->
                                 </div>
                             </div>
@@ -166,6 +166,8 @@ export default {
     },
     data(){
         return{
+            disableInputEmail: false,
+            disableInputPhone: false,
             searchDone:false,
             ErrorNumDoc: false,
             disabled: true,
@@ -265,6 +267,12 @@ export default {
                     const resp = await axios.get(`/validardni/${this.dniTemp}/${this.typeDocumentTemp}`);
                     // validar si objeto esta vacio
                     if (!resp.data.error) {
+                        if (resp.data.data.email != null || resp.data.data.email != '')
+                            this.disableInputEmail = true;
+
+                        if (resp.data.data.phone != null || resp.data.data.phone != '')
+                            this.disableInputPhone = true;
+
                         if (Object.keys(resp.data.data).length > 0){
                             this.existData = 3  // 3: Se hace consulta y existe
                             this.form.typeDocument = this.typeDocumentTemp
@@ -291,6 +299,8 @@ export default {
                             this.form.phone = ""
                             this.form.organization = ""
                             this.searchDone = true;
+                            this.disableInputEmail = false;
+                            this.disableInputPhone = false;
                         }
                         this.LoadingSearchDNI = false;
                     }else{ // Error de validacion
@@ -306,6 +316,7 @@ export default {
                         this.form.organization = ""
                     }
 
+console.log(this.disableInputPhone);
                 }, 600);
             }
         },
