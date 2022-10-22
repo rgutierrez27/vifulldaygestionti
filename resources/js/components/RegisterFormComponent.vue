@@ -220,14 +220,12 @@ export default {
             .then((data) =>{
                 // alert(JSON.parse(data))
                 //console.log(newData)
-                console.log(data.data.message);
                 if (data.data.message == 'OK') {
                     this.issucess = true
                 }else{
                     this.issucess = false
                     this.messageError = "Ya se encuentra registrado"
                 }
-                console.log(data.data);
             })
             .catch(({response})=>{
                 this.issucess = false

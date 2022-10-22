@@ -93,7 +93,7 @@ class ParticipantController extends Controller
         //     'auto' #Usuario registra
         // );
 
-        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", ['1', $tipoDocumento, $numeroDocumento, $primerNombre, $segundoNombre, $apellidoPaterno, $apellidoMaterno, $email, $phone, '000000', $is_certificate, 'CP20220001', 'auto']);
+        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", ['1', $tipoDocumento, $numeroDocumento, $primerNombre, $segundoNombre, $apellidoPaterno, $apellidoMaterno, $email, $phone, '', $is_certificate, 'CP20220001', 'auto']);
         $resp =  $res[0]->result;
 
         if ($resp == 'OK') {

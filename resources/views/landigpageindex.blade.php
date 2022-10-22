@@ -170,7 +170,7 @@
                     <h3 class="heading-lg-postfix-15">V Congreso</h3>
                     <p>
                         Se llevarán a cabo diversas ponencias por investigadores renombrados nacionales e internacionales en
-                        las temáticas y se llevará a cabo los días 25, 26, 27 y 28 de octubre de 2022.👨‍💼👏
+                        las temáticas y se llevará a cabo los días 25, 26, 27 y 28 de octubre de 2022.
                     </p>
                     <!-- List Inline-->
                     <ul class="list-inline list-inline-xl">
@@ -183,7 +183,7 @@
                                 </div>
                                 <div class="unit-body">
                                     <h5>Actividades</h5>
-                                    <p>• 02 Conversatorios <br> • 03 taller <br> • Concurso de Gregorio Mendel <br> • Jornada de investiagcion</p>
+                                    <p>• 02 Conversatorios <br> • 03 taller <br> • Concurso de Gregorio Mendel <br> • Jornada de investigación</p>
                                     {{-- <p>03 Talleres</p> --}}
                                 </div>
                             </div>
@@ -293,7 +293,7 @@ $ponentes[] = new stdClass();
                         $ponentes[] = new stdClass();
                         $ponentes[6]->name = 'Sra. Marina Bustamante';
                         $ponentes[6]->role = 'Investigador';
-                        $ponentes[6]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[6]->image = 'images/ponentes/Sra-Marina-Bustamante.png';
                         $ponentes[6]->description = '';
                         $ponentes[6]->facebook = '#';
 
@@ -413,14 +413,14 @@ $ponentes[] = new stdClass();
                         $ponentes[] = new stdClass();
                         $ponentes[23]->name = 'Dr. José Joaquín Piña Mondragón';
                         $ponentes[23]->role = 'Investigador';
-                        $ponentes[23]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[23]->image = 'images/ponentes/Dr.-José-Joaquín-Piña-Mondragón.png';
                         $ponentes[23]->description = 'México - Universidad Marista de Querétaro';
                         $ponentes[23]->facebook = '#';
 
                         $ponentes[] = new stdClass();
                         $ponentes[24]->name = 'Mg. Amado Abdías Solano Sare';
                         $ponentes[24]->role = 'Investigador';
-                        $ponentes[24]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[24]->image = 'images/ponentes/FOTO-AMADO-SOLANO.png';
                         $ponentes[24]->description = '';
                         $ponentes[24]->facebook = '#';
 
