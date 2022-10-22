@@ -294,7 +294,7 @@ $ponentes[] = new stdClass();
                         $ponentes[6]->name = 'Sra. Marina Bustamante';
                         $ponentes[6]->role = 'Investigador';
                         $ponentes[6]->image = 'images/ponentes/Sra-Marina-Bustamante.png';
-                        $ponentes[6]->description = '';
+                        $ponentes[6]->description = 'Fundadora Renzo Costa';
                         $ponentes[6]->facebook = '#';
 
 
@@ -302,7 +302,7 @@ $ponentes[] = new stdClass();
                         $ponentes[7]->name = 'Lic. Hernán Alonso Gonzales Valdivia';
                         $ponentes[7]->role = 'Investigador';
                         $ponentes[7]->image = 'images/ponentes/Alonso-Gonzales.jpg';
-                        $ponentes[7]->description = '';
+                        $ponentes[7]->description = 'Gerente General NPG';
                         $ponentes[7]->facebook = '#';
 
                         $ponentes[] = new stdClass();
