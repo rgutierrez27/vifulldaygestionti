@@ -435,7 +435,7 @@ $ponentes[] = new stdClass();
                         $ponentes[26]->name = 'Ing. Roger Rodríguez Rojas';
                         $ponentes[26]->role = 'Investigador';
                         $ponentes[26]->image = 'images/ponentes/Ing.-Roger-Rodríguez-Rojas.jpg';
-                        $ponentes[26]->description = 'Ing. Roger Rodríguez Rojas';
+                        $ponentes[26]->description = 'Gerente General de Sedalid';
                         $ponentes[26]->facebook = '#';
 
                         $ponentes[] = new stdClass();
