@@ -301,7 +301,7 @@
                 <h2>{{$names}}</h2>
                 <h5>Porfavor haz click en continuar para verificar su correo</h5>
                 <p>Publico General: S/. 120.00</p>
-                <p>Miembros del colegio (convenio): S/. 60.00</p>
+                <p>Miembros del Colegio de Contadores o Admistración: S/. 60.00</p>
                 <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: vrinvestigacion@uct.edu.pe</span>
                 <br>
 
@@ -316,8 +316,7 @@
 
 
     <div class="floating-text">
-        Organizado por la <a href="#" target="_blank">Universidad Católica de trujillo</a> -  <br>
-        Gerencia de TI
+        Organizado por el  Vicerrectorado de Investigación  de la Universidad Católica de Trujillo  <br>
     </div>
 
 </body>

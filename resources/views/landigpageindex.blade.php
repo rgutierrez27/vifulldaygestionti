@@ -249,7 +249,7 @@ $ponentes[] = new stdClass();
                         $ponentes[0]->name = 'Dr. Jardelino Menegat';
                         $ponentes[0]->role = 'Investigador';
                         $ponentes[0]->image = 'images/ponentes/2.jpg';
-                        $ponentes[0]->description = 'La educación de calidad en tiempos complejos';
+                        $ponentes[0]->description = 'Brasil - Universidad La Salle, Canoas - RS';
                         $ponentes[0]->facebook = '#';
 
                         $ponentes[] = new stdClass();
@@ -322,7 +322,7 @@ $ponentes[] = new stdClass();
                         $ponentes[] = new stdClass();
                         $ponentes[10]->name = 'Ing. Luis Fernando Rodríguez Salvador';
                         $ponentes[10]->role = 'Investigador';
-                        $ponentes[10]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[10]->image = 'images/ponentes/Luis-Fernando-Rodriguez-Salvador.jpg';
                         $ponentes[10]->description = '';
                         $ponentes[10]->facebook = '#';
 
@@ -434,7 +434,7 @@ $ponentes[] = new stdClass();
                         $ponentes[] = new stdClass();
                         $ponentes[26]->name = 'Ing. Roger Rodríguez Rojas';
                         $ponentes[26]->role = 'Investigador';
-                        $ponentes[26]->image = 'images/ponentes/ponente-default.jpg';
+                        $ponentes[26]->image = 'images/ponentes/Ing.-Roger-Rodríguez-Rojas.jpg';
                         $ponentes[26]->description = 'Ing. Roger Rodríguez Rojas';
                         $ponentes[26]->facebook = '#';
 
