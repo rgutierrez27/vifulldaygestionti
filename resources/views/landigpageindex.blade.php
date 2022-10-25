@@ -316,14 +316,14 @@ $ponentes[] = new stdClass();
                         $ponentes[9]->name = 'Dr. Oscar Humberto Moreno Rubiños';
                         $ponentes[9]->role = 'Investigador';
                         $ponentes[9]->image = 'images/ponentes/ponente-default.jpg';
-                        $ponentes[9]->description = '';
+                        $ponentes[9]->description = 'Dr.-Oscar-Humberto-Moreno-Rubiños.jpg';
                         $ponentes[9]->facebook = '#';
 
                         $ponentes[] = new stdClass();
                         $ponentes[10]->name = 'Ing. Luis Fernando Rodríguez Salvador';
                         $ponentes[10]->role = 'Investigador';
                         $ponentes[10]->image = 'images/ponentes/Luis-Fernando-Rodriguez-Salvador.jpg';
-                        $ponentes[10]->description = '';
+                        $ponentes[10]->description = 'INSPECTOR DE TRABAJO DE LA  SUPERINTENDENCIA NACIONAL DE FISCALIZACIÓN LABORAL-SUNAFIL';
                         $ponentes[10]->facebook = '#';
 
                         $ponentes[] = new stdClass();
@@ -344,7 +344,7 @@ $ponentes[] = new stdClass();
                         $ponentes[13]->name = 'Dra. Delia Izaguirre';
                         $ponentes[13]->role = 'Investigador';
                         $ponentes[13]->image = 'images/ponentes/ponente-default.jpg';
-                        $ponentes[13]->description = '';
+                        $ponentes[13]->description = 'Universidad Católica de Trujillo Benedicto XVI';
                         $ponentes[13]->facebook = '#';
 
                         $ponentes[] = new stdClass();
