@@ -315,8 +315,8 @@ $ponentes[] = new stdClass();
                         $ponentes[] = new stdClass();
                         $ponentes[9]->name = 'Dr. Oscar Humberto Moreno Rubiños';
                         $ponentes[9]->role = 'Investigador';
-                        $ponentes[9]->image = 'images/ponentes/ponente-default.jpg';
-                        $ponentes[9]->description = 'Dr.-Oscar-Humberto-Moreno-Rubiños.jpg';
+                        $ponentes[9]->image = 'images/ponentes/Dr.-Oscar-Humberto-Moreno-Rubiños.jpg';
+                        $ponentes[9]->description = 'SUNAFIL';
                         $ponentes[9]->facebook = '#';
 
                         $ponentes[] = new stdClass();
