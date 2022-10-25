@@ -379,7 +379,7 @@ $ponentes[] = new stdClass();
                         $ponentes[18]->name = 'Dra. Delia Margarita Izaguirre Torres.';
                         $ponentes[18]->role = 'Investigador';
                         $ponentes[18]->image = 'images/ponentes/11.jpg';
-                        $ponentes[18]->description = '';
+                        $ponentes[18]->description = 'Universidad Católica de Trujillo Benedicto XVI';
                         $ponentes[18]->facebook = '#';
 
                         $ponentes[] = new stdClass();
