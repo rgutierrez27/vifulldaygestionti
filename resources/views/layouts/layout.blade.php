@@ -73,11 +73,6 @@
                                     data-rd-navbar-toggle=".rd-navbar-nav-wrap"><span></span></button>
                                 <!--RD Navbar Brand-->
                                 <div class="rd-navbar-brand">
-                                    <!--Brand--><a class="brand" href="/"><img class="brand-logo-dark"
-                                            src="/images/logo-default.png" srcset="/images/logo-default@2x.png 2x"
-                                            alt="V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA " /><img class="brand-logo-light"
-                                            src="/images/logo-inverse.png" srcset="/images/logo-inverse@2x.png 2x"
-                                            alt="V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA " /></a>
                                 </div>
                             </div>
                             <!-- Rd Navbar Navigation-->
@@ -86,11 +81,7 @@
 
                                 </div>
                             </div>
-                            <!-- RD Navbar Collapse-->
-                            <div class="rd-navbar-collapse"><a class="button button-primary" href="/regitroform"
-                                    data-triangle=".button-overlay"><span>Participar</span><span
-                                        class="button-overlay"></span></a>
-                            </div>
+                           
                         </div>
                     </div>
                 </nav>
@@ -113,20 +104,9 @@
         <!-- Section Register-->
         @yield('SectionRegisterForm')
         <!-- Section Pre Footer-->
-        <section class="section section-lg bg-gray-900">
+        <section class="footer section section-lg bg-gray-900">
             <div class="container">
                 <div class="row row-30">
-                    <div class="col-xs-10 col-lg-4 align-self-center"><a class="brand" href="/"><img
-                                class="brand-logo-light" src="/images/logo-inverse-big.png"
-                                srcset="/images/logo-inverse-big@2x.png 2x" alt="V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA"></a>
-                    </div>
-                    <div class="col-xs-10 col-sm-6 col-lg-4">
-                        <h5><span class="big font-weight-sbold">Detalle del evento</span></h5>
-                        <div class="event-detail">
-
-                            <p class="event-detail-address big" data-splitting>Este evento se desarrollará los días 25 al 28 de octubre de 2022, mediante medios digitales y está dirigido a docentes, investigadores, estudiantes, profesionales y representantes de las diferentes instituciones a nivel nacional e internaciona</p>
-                        </div>
-                    </div>
                     <div class="col-xs-10 col-sm-6 col-lg-4">
                         <h5><span class="big font-weight-sbold">Redes Sociales</span></h5>
                         <div class="event-detail">
