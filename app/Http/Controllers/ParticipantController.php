@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Concept;
 use App\Helpers\DateTimeCarbonHelper;
 use App\Helpers\GeneralHelper;
 use App\Participant;
@@ -25,12 +26,33 @@ class ParticipantController extends Controller
 
     public function landigpageindex()
     {
-        return view('landigpageindex');
+        $events = DB::table('cap_capacitacion')
+            ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado', 'fechainicio', 'fechatermino', 'url_name')
+            ->where('fechatermino', '>', now('America/Lima'))
+            ->where('activo', 1)
+            ->get();
+        return view('landigpageindex', ['events' => $events]);
     }
 
-    public function registerForm()
+    public function registerForm($event_name)
     {
-        return view('registerForm');
+        $event = DB::table('cap_capacitacion')
+            ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado')
+            ->where('url_name', $event_name)
+            ->where('fechatermino', '>', now('America/Lima'))
+            ->first();
+
+        if(!$event)
+            return response('No se encontró evento', 404);
+
+        $concepto_inscripcion = Concept::select('descripcioncompleta', 'importe', 'concepto')->with('detail')->find($event->concepto_inscripcion);
+        $concepto_certificado = Concept::select('descripcioncompleta', 'importe', 'concepto')->with('detail')->find($event->concepto_certificado);
+
+        return view('registerForm', [
+            "event"                 => $event,
+            "concepto_inscripcion"  => $concepto_inscripcion,
+            'concepto_certificado'  => $concepto_certificado
+        ]);
     }
 
     public function confirmemailsuccess()
@@ -46,16 +68,19 @@ class ParticipantController extends Controller
 
     public function addparticipant(Request $request)
     {
-        $primerNombre = $request->names1;
-        $segundoNombre = $request->names2;
-        $apellidoPaterno = $request->lastname1;
-        $apellidoMaterno = $request->lastname2;
-        $numeroDocumento =  $request->dni;
-        $email = $request->email;
-        $phone =  $request->phone;
-        $organization = $request->organization;
-        $is_certificate = $request->is_certificate;
-        $tipoDocumento = $request->typeDocument;
+        $primerNombre       = $request->names1;
+        $segundoNombre      = $request->names2;
+        $apellidoPaterno    = $request->lastname1;
+        $apellidoMaterno    = $request->lastname2;
+        $numeroDocumento    = $request->dni;
+        $email              = $request->email;
+        $phone              = $request->phone;
+        $organization       = $request->organization;
+        $is_certificate     = $request->is_certificate;
+        $tipoDocumento      = $request->typeDocument;
+        $incription_concept     = $request->incription_concept;
+        $certificate_concept    = $request->certificate_concept;
+        $event                  = $request->event;
 
 
         if ($tipoDocumento == '01') {
@@ -77,23 +102,24 @@ class ParticipantController extends Controller
             }
         }
 
-        // CALL sp_capInsertarParticipantesWeb(
-        //     '1', #Flag por defecto
-        //     '01', #Tipo de documento segun el erp
-        //     '40060948', #Numero documento
-        //     'ORLANDO', #Primer nombre
-        //     'MARTÍN', #Segundo nombre
-        //     'SANCHEZ', #Apellido Paterno
-        //     'CASTILLO', #Apellido Materno
-        //     'orlandosanchez78@hotmail.com', #Email
-        //     '947904641', #Celular
-        //     '000004', #Id institucion aca_institucion
-        //     '1', #Requiere certificado
-        //     'CP20220001', #Codigo de capacitacion: cap_capacitacion
-        //     'auto' #Usuario registra
-        // );
 
-        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", ['1', $tipoDocumento, $numeroDocumento, $primerNombre, $segundoNombre, $apellidoPaterno, $apellidoMaterno, $email, $phone, '', $is_certificate, 'CP20220001', 'auto']);
+        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
+            '1', 
+            $tipoDocumento,
+            $numeroDocumento,
+            $primerNombre,
+            $segundoNombre,
+            $apellidoPaterno,
+            $apellidoMaterno,
+            $email,
+            $phone,
+            '',
+            $is_certificate,
+            $event,
+            'auto',
+            $incription_concept  == '' ? null : $incription_concept,
+            $certificate_concept == '' ? null : $certificate_concept
+        ]);
         $resp =  $res[0]->result;
 
         if ($resp == 'OK') {

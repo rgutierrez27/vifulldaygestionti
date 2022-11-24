@@ -1,5 +1,14 @@
 <template>
     <div>
+        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_">
+            <div class="container">
+            <ul class="breadcrumbs-custom-path">
+                <li><a href="/">{{event_.descripcion}}</a></li>
+                <li class="active">Formulario de registro</li>
+            </ul>
+            <h3 class="breadcrumbs-custom-title">Participa en nuestro evento</h3>
+            </div>
+        </section>
         <section class="section section-lg bg-default text-center">
             <div class="container">
             <div class="loader" v-if="loading">
@@ -45,7 +54,7 @@
                             <div class="col-md-6">
                                 <div class="form-wrap2">
                                     <label for="contact-name2">Tipo de documento</label>
-                                    <select name="" id="" v-model="typeDocumentTemp" style="width: 100%; min-height: 78px; padding: 6%;" :disabled="searchDone">
+                                    <select name="" id="" v-model="typeDocumentTemp" style="width: 100%; min-height: 78px; padding: 6%;" :disabled="searchDone" required>
                                         <option value="01">DNI</option>
                                         <option value="05">CARNET DE EXTRANJERIA</option>
                                         <!-- <option value="06">REG. UNICO DE CONTRIBUYENTES</option> -->
@@ -124,23 +133,39 @@
                                     <!-- <label class="form-label" for="contact-phone">Numero Celular</label> -->
                                 </div>
                             </div>
+                            <div class="col-md-6" v-if="incription_concepts.length > 0">
+                                <div class="form-wrap2">
+                                    <label for="contact-name2">Incripción</label>
+                                    <select name="" id="" v-model="form.incription_concept" style="width: 100%; min-height: 78px; padding: 6%;" required>
+                                        <option value="" disabled>-- SELECCIONAR UNA OPCIÓN --</option>
+                                        <option v-for="(item, index) in incription_concepts" :key="index" :value="item.value">{{item.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6" v-if="certificate_concepts.length > 0 && is_certificate == true">
+                                <div class="form-wrap2">
+                                    <label for="contact-name2">Certificado</label>
+                                    <select name="" id="" v-model="form.certificate_concept" style="width: 100%; min-height: 78px; padding: 6%;" required>
+                                        <option value="" disabled>-- SELECCIONAR UNA OPCIÓN --</option>
+                                        <option v-for="(item, index) in certificate_concepts" :key="index" :value="item.value">{{item.label}}</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-12 d-none">
                                 <div class="form-wrap" >
                                     <label for="contact-organization">Organización / Universidad</label>
                                     <input class="form-input"  v-model="form.organization" id="contact-organization" type="organization" name="organization" >
                                 </div>
-
                             </div>
 
                             <div class="col-12">
                                 <div class="form-wrap">
                                     <label>
-                                        <input type='checkbox' id="certificateid">
+                                        <input type='checkbox' id="certificateid" v-model="is_certificate">
                                         <span></span>
                                         Deseo Certificado
                                     </label>
                                 </div>
-                                <img class="img-fluid" src="https://i.imgur.com/8dxbzWH.png" width="40%" alt="" srcset="">
                             </div>
 
                             <div class="col-md-12">
@@ -166,8 +191,12 @@ export default {
     },
     data(){
         return{
+            event_: null,
+            incription_concepts:[],
+            certificate_concepts:[],
             disableInputEmail: false,
             disableInputPhone: false,
+            is_certificate: false,
             searchDone:false,
             ErrorNumDoc: false,
             disabled: true,
@@ -185,7 +214,9 @@ export default {
                 email: null,
                 phone: "",
                 organization : null,
-                is_certificate:false
+                is_certificate: 0,
+                incription_concept: '',
+                certificate_concept: '',
             },
             LoadingSearchDNI: false,
             loading: false,
@@ -200,28 +231,20 @@ export default {
         ],
         }
     },
-
     methods: {
         submitForm(e){
             e.preventDefault();
             this.onCompleteForm();
         },
-
         onCompleteForm(){
-            let params = this.form;
-            var isChecked = document.getElementById('certificateid').checked;
-            if (isChecked) {
-                params.is_certificate = 1
-            }else{
-                params.is_certificate = 0
-            }
-                this.loading = true;
+            let params      = this.form;
+            this.loading    = true;
 
-
-            axios.post(`/addparticipant`,params)
+            axios.post(`/addparticipant`,{
+                ...params,
+                event: event.capacitacion
+            })
             .then((data) =>{
-                // alert(JSON.parse(data))
-                //console.log(newData)
                 if (data.data.message == 'OK') {
                     this.issucess = true
                 }else{
@@ -237,7 +260,6 @@ export default {
                 this.loading = false;
             })
         },
-
         validarDNI(){
             let longitudStringPermitida = 0;
             if (this.typeDocumentTemp == '01')
@@ -249,18 +271,12 @@ export default {
 
 
             var letters = this.dniTemp.length;
-            // console.log(letters);
-            // console.log(this.typeDocumentTemp);
-            // console.log(longitudStringPermitida);
             if (letters != longitudStringPermitida) {
-                // this.dniTemp = this.dniTemp.substring(0,longitudStringPermitida);
                 this.ErrorNumDoc = true;
             }else{
                 this.ErrorNumDoc = false;
             }
 
-
-            // letters = letters + 1;
             if (letters == longitudStringPermitida) {
                 this.LoadingSearchDNI = true;
                 setTimeout(async () => {
@@ -320,7 +336,6 @@ console.log(this.disableInputPhone);
                 }, 600);
             }
         },
-
         setFocus(item){
             document.getElementById(item).focus();
         },
@@ -337,7 +352,6 @@ console.log(this.disableInputPhone);
             }
 
         },
-
         clearData(){
             this.searchDone =false;
             this.ErrorNumDoc = false;
@@ -362,10 +376,48 @@ console.log(this.disableInputPhone);
             this.issucess = null;
         },
         changEvent(){
-            console.log('dsfsdf');
             alert(this.typeDocumentTemp);
+        },
+        initDataConcepts(){
+            if(concepto_inscripcion !== null){
+                const detail = concepto_inscripcion.detail;
+                this.incription_concepts = detail.length == 0 
+                    ? [{value: concepto_inscripcion.concepto,label: `${concepto_inscripcion.descripcioncompleta} S/.${concepto_inscripcion.importe}`}]
+                    : detail.reduce(function(acc, item){
+                        acc.push({
+                            value: `d${item.id}`,
+                            label: `${item.descripcion} S/.${item.importe}`
+                        });
+                        return acc;
+                    }, []);
+            }
+            
+            if(concepto_certificado !== null){
+                const detail_ = concepto_certificado.detail;
+                this.certificate_concepts = detail_.length == 0 
+                    ? [{value: concepto_certificado.concepto,label: `${concepto_certificado.descripcioncompleta} S/.${concepto_certificado.importe}`}]
+                    : detail_.reduce(function(acc, item){
+                        acc.push({
+                            value: `d${item.id}`,
+                            label: `${item.descripcion} S/.${item.importe}`
+                        });
+                        return acc;
+                    }, []);
+            }
+
+            this.event_ = event_
         }
     },
+    mounted(){
+        this.initDataConcepts();
+    },
+    watch:{
+        is_certificate(val){
+            this.form.is_certificate = val == true ? 1 : 0;
+            if (val == false)
+                this.form.certificate_concept = '';
+        }
+    }
 }
 </script>
 

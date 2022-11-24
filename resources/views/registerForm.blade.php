@@ -1,21 +1,24 @@
 @extends('layouts.layout')
 
 @section('styles')
-{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.min.css"> --}}
+  <style>
+      .rd-navbar{
+        display: none !important;
+      }
 
+      .breadcrumbs-custom{
+        padding: 5% !important;
+      }
+
+      .footer{
+        display: none !important;
+      }
+  </style>
 @endsection
 
 @section('SectionRegisterForm')
 
-<section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);">
-    <div class="container">
-      <ul class="breadcrumbs-custom-path">
-        <li><a href="/">V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA</a></li>
-        <li class="active">Formulario de registro</li>
-      </ul>
-      <h3 class="breadcrumbs-custom-title">Participa en nuestro evento</h3>
-    </div>
-</section>
+
 
 <div id="app">
     <register-form-component></register-form-component>
@@ -23,14 +26,10 @@
 @endsection
 
 @section('scripts')
+<script>
+    const event_                = @json($event);
+    const concepto_inscripcion  = @json($concepto_inscripcion);
+    const concepto_certificado  = @json($concepto_certificado);
+</script>
 <script src="/js/app.js"></script>
-{{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/10.14.0/sweetalert2.all.js"></script> --}}
-{{-- <script>
-    var app = new Vue({
-      el: '#app',
-      data: {
-        message: 'Hello Vue!'
-      }
-    })
-</script> --}}
 @endsection
