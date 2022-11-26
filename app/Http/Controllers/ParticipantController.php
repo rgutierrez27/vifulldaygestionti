@@ -127,7 +127,7 @@ class ParticipantController extends Controller
                 ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado')
                 ->where('capacitacion', $event)
                 ->first();
-
+            $event_name = $event->descripcion;
             $payment_url = config('app.env', 'production') == 'production'
                 ? 'https://pagonline.uct.edu.pe/externos'
                 : 'https://pasarelatest.uct.edu.pe/externos';
@@ -139,7 +139,7 @@ class ParticipantController extends Controller
                 'event'         => $event,
                 'payment_url'   => $payment_url
             ], function ($message) use ($request) {
-                $message->to($request->email, $request->names)->subject('Por favor confirma tu correo');
+                $message->to($request->email, $request->names)->subject("REGISTRO EVENTO $event_name");
             });
         }
 
