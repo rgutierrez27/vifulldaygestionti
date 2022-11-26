@@ -18,8 +18,6 @@
 
 @section('SectionRegisterForm')
 
-
-
 <div id="app">
     <register-form-component></register-form-component>
 </div>

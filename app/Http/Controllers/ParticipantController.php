@@ -75,7 +75,6 @@ class ParticipantController extends Controller
         $numeroDocumento    = $request->dni;
         $email              = $request->email;
         $phone              = $request->phone;
-        $organization       = $request->organization;
         $is_certificate     = $request->is_certificate;
         $tipoDocumento      = $request->typeDocument;
         $incription_concept     = $request->incription_concept;
@@ -124,9 +123,22 @@ class ParticipantController extends Controller
 
         if ($resp == 'OK') {
             $confirmation_code = Str::random(25);
+            $event = DB::table('cap_capacitacion')
+                ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado')
+                ->where('capacitacion', $event)
+                ->first();
+
+            $payment_url = config('app.env', 'production') == 'production'
+                ? 'https://pagonline.uct.edu.pe/externos'
+                : 'https://pasarelatest.uct.edu.pe/externos';
 
             // Send confirmation code
-            Mail::send('emails.confirmation_code', ["confirmation_code" => $confirmation_code, 'names' => $primerNombre], function ($message) use ($request) {
+            Mail::send('emails.confirmation_code', [
+                "confirmation_code" => $confirmation_code, 
+                'names'         => $primerNombre, 
+                'event'         => $event,
+                'payment_url'   => $payment_url
+            ], function ($message) use ($request) {
                 $message->to($request->email, $request->names)->subject('Por favor confirma tu correo');
             });
         }

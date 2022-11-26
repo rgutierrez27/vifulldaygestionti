@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirm Email</title>
+    <title>Confirmación registro en evento {{$event->descripcion}}</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
@@ -283,12 +283,18 @@
     </style>
 </head>
 <body>
+    @php
+        $ce = $event->concepto_inscripcion;
+        $cc = $event->concepto_certificado;
+        $pago_inscripcion = ($ce == null || Str::length($ce) == 0) ? false : true;
+        $pago_certificado = ($cc == null || Str::length($cc) == 0) ? false : true;
+    @endphp
     <div class="courses-container">
         <div class="course">
             <div class="course-preview">
                 <h6>Evento</h6>
-                <h2>V CONGRESO MUNDIAL DE INVESTIGACIÓN CIENTÍFICA</h2>
-                <a href="#" target="_blank">Ver Congreso <i class="fas fa-chevron-right"></i></a>
+                <h2>{{$event->descripcion}}</h2>
+                {{-- <a href="#" target="_blank">Ver Congreso <i class="fas fa-chevron-right"></i></a> --}}
             </div>
             <div class="course-info">
                 <div class="progress-container">
@@ -297,16 +303,23 @@
 
                     </span>
                 </div>
-                <h6>Gracias por registarte </h6>
+                <h6>Gracias por registarte</h6>
                 <h2>{{$names}}</h2>
-                <h5>Porfavor haz click en continuar para verificar su correo</h5>
-                <p>Publico General: S/. 120.00</p>
-                <p>Miembros del Colegio de Contadores o Admistración: S/. 60.00</p>
-                <span>Recuerda que para validar el pago de tu certificado envia el voucher al siguiente correo: vrinvestigacion@uct.edu.pe</span>
+                <p>
+                    @if ($pago_inscripcion && $pago_certificado)
+                        <b>Para realizar el pago de tu inscripción o certificado por favor ingresar al siguiente enlace.</b>    
+                    @else
+                        @if ($pago_inscripcion)
+                            <b>Para realizar el pago de tu inscripción por favor ingresar al siguiente enlace.</b>
+                        @endif
+                        @if ($pago_inscripcion)
+                            <b>Para realizar el pago de tu certificado por favor ingresar al siguiente enlace.</b>
+                        @endif
+                    @endif
+                </p>
                 <br>
-
-                <a href="{{ url('/register/verify/' . $confirmation_code) }}" target="_blank" style="cursor: pointer;">
-                    <button  class="btn">Continuar</button>
+                <a href="{{$payment_url}}" target="_blank" style="cursor: pointer;" type="button">
+                    <button class="btn">IR A PAGAR</button>
                 </a>
 
             </div>
@@ -316,7 +329,7 @@
 
 
     <div class="floating-text">
-        Organizado por el  Vicerrectorado de Investigación  de la Universidad Católica de Trujillo  <br>
+       Universidad Católica de Trujillo <br>
     </div>
 
 </body>
