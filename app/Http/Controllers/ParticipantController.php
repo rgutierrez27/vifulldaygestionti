@@ -138,7 +138,7 @@ class ParticipantController extends Controller
                 'names'         => $primerNombre, 
                 'event'         => $event,
                 'payment_url'   => $payment_url
-            ], function ($message) use ($request) {
+            ], function ($message) use ($request, $event_name) {
                 $message->to($request->email, $request->names)->subject("REGISTRO EVENTO $event_name");
             });
         }
