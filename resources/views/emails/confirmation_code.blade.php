@@ -312,7 +312,7 @@
                         @if ($pago_inscripcion)
                             <b>Para realizar el pago de tu inscripción por favor ingresar al siguiente enlace.</b>
                         @endif
-                        @if ($pago_inscripcion)
+                        @if ($pago_certificado)
                             <b>Para realizar el pago de tu certificado por favor ingresar al siguiente enlace.</b>
                         @endif
                     @endif
