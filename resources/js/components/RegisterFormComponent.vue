@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_">
+        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_ && issucess == null">
             <div class="container">
             <ul class="breadcrumbs-custom-path">
                 <li><a href="/">{{event_.descripcion}}</a></li>
@@ -16,38 +16,43 @@
                 <img class="loaderImg" src="https://i.imgur.com/1J8ulDf.gif">
             </div>
             <div class="row justify-content-md-center" id="infoAfterRegister">
-
-                <div class="col-md-12 col-lg-8" v-if="issucess == true">
-                        <div class="inset-lg-right-30">
-                            <h3 style='color:#5cb85c;'>Gracias por registrarse</h3>
-                            <p>Sus datos se han registrado satisfactoriamente, en unos minutos estara recibiendo un correo electrónico
-                            a la cuenta de correo ingresada para finalizar el proceso de registro</p>
-                            <div class="group">
-                                <a class="button button-secondary box-with-triangle-right" href="/" data-triangle=".button-overlay">
-                                    <span>Ir al inicio</span>
-                                    <span class="button-overlay" style="border-top-width: 60.4px; border-left-width: 187.875px;"></span>
-                                </a>
+                <div class="col-md-12 col-lg-8 success-container" v-if="issucess == true">
+                    <section class="parallax-container section" style="background:#072667;">
+                        <div class="parallax-content section-lg context-dark text-center">
+                            <div class="container">
+                                <h6 class="text-secondary">{{form.names1}} muchas gracias por registrarse :)</h6>
+                                <h3>Se le notificará a su correo electrónico para continuar con el proceso.</h3>
+                                <div class="group">
+                                    <a class="button button-secondary box-with-triangle-right" href="/" data-triangle=".button-overlay">
+                                        <span>Ir al inicio</span>
+                                        <span class="button-overlay" style="border-top-width: 60.4px; border-left-width: 187.875px;"></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                    </section>
                 </div>
 
-                <div class="col-md-12 col-lg-8" v-if="issucess == false">
-                        <div class="inset-lg-right-30">
-                            <h4 style='color:#d9534f;'>Ups, Algo ocurrio</h4>
-                            <p>{{messageError}}</p>
-                            <div class="group">
-                                <a class="button button-secondary box-with-triangle-right" href="/regitroform" data-triangle=".button-overlay">
-                                    <span>Intentar nuevamente</span>
-                                    <span class="button-overlay" style="border-top-width: 60.4px; border-left-width: 187.875px;"></span>
-                                </a>
+                <div class="col-md-12 col-lg-8 success-container" v-if="issucess == false">
+                    <section class="parallax-container section" style="background:#072667;">
+                        <div class="parallax-content section-lg context-dark text-center">
+                            <div class="container">
+                                <h6 class="text-secondary">No se ha completado el registro :c</h6>
+                                <h3>{{form.names1}} usted ya se encuentra registrado.</h3>
+                                <div class="group">
+                                    <a class="button button-secondary box-with-triangle-right" href="#" data-triangle=".button-overlay" @click="()=>{issucess=null;}">
+                                        <span>Volver a intentar</span>
+                                        <span class="button-overlay" style="border-top-width: 60.4px; border-left-width: 187.875px;"></span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
+                    </section>
                 </div>
 
 
                 <div class="col-md-12 col-lg-10" v-show="issucess == null" >
                     <h4 class="mb-5">Registrate para poder participar</h4>
-
                     <!--Mailform-->
                     <form v-on:submit.prevent="submitForm" >
                         <div class="row row-narrow row-20">
@@ -242,7 +247,7 @@ export default {
 
             axios.post(`/addparticipant`,{
                 ...params,
-                event: event.capacitacion
+                event: event_.capacitacion
             })
             .then((data) =>{
                 if (data.data.message == 'OK') {
@@ -422,6 +427,9 @@ console.log(this.disableInputPhone);
 </script>
 
 <style scoped>
+.success-container{
+    height: 62vh !important;
+}
 #axiosForm {
   /* Components Root Element ID */
   position: relative;
