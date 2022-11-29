@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
+    {{-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon"> --}}
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Barlow%7CBarlow+Condensed:300,400,500,600,700,900">
     <link rel="stylesheet" href="/css/bootstrap.css">
@@ -14,9 +14,6 @@
     <link rel="stylesheet" href="/css/style.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-    {{-- <script src="https://bl.ocks.org/sarahjsquire/raw/4706c4d48962e9962175/6ad2d061715fbc9f6de328ecb5ab5d3a6c1003d5/jquery.jSlots.js"></script>
-<script src="/js/jquery.jSlots.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.6.0/underscore-min.js"></script> --}}
     <style>
         .ie-panel {
             display: none;
