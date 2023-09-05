@@ -6,12 +6,12 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    {{-- <link rel="icon" href="/images/favicon.ico" type="image/x-icon"> --}}
+    <link rel="icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" type="text/css"
         href="https://fonts.googleapis.com/css?family=Barlow%7CBarlow+Condensed:300,400,500,600,700,900">
-    <link rel="stylesheet" href="/css/bootstrap.css">
-    <link rel="stylesheet" href="/css/fonts.css">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{ URL::asset('css/bootstrap.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ URL::asset('css/style.css') }}">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <style>
@@ -147,9 +147,9 @@
     </div>
 
     @yield('scripts')
-    <script src="/js/jquery.jSlots.js"></script>
-    <script src="/js/core.min.js"></script>
-    <script src="/js/script.js"></script>
+    <script src="{{ URL::asset('js/jquery.jSlots.js') }}"></script>
+    <script src="{{ URL::asset('js/core.min.js') }}"></script>
+    <script src="{{ URL::asset('js/script.js') }}"></script>
 
 </body>
 

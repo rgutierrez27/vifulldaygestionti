@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_ && issucess == null">
+        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(../images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_ && issucess == null">
             <div class="container">
             <ul class="breadcrumbs-custom-path">
                 <li><a href="/">{{event_.descripcion}}</a></li>
@@ -386,7 +386,7 @@ console.log(this.disableInputPhone);
         initDataConcepts(){
             if(concepto_inscripcion !== null){
                 const detail = concepto_inscripcion.detail;
-                this.incription_concepts = detail.length == 0 
+                this.incription_concepts = detail.length == 0
                     ? [{value: concepto_inscripcion.concepto,label: `${concepto_inscripcion.descripcioncompleta} S/.${concepto_inscripcion.importe}`}]
                     : detail.reduce(function(acc, item){
                         acc.push({
@@ -396,10 +396,10 @@ console.log(this.disableInputPhone);
                         return acc;
                     }, []);
             }
-            
+
             if(concepto_certificado !== null){
                 const detail_ = concepto_certificado.detail;
-                this.certificate_concepts = detail_.length == 0 
+                this.certificate_concepts = detail_.length == 0
                     ? [{value: concepto_certificado.concepto,label: `${concepto_certificado.descripcioncompleta} S/.${concepto_certificado.importe}`}]
                     : detail_.reduce(function(acc, item){
                         acc.push({

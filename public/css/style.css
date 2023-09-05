@@ -8708,7 +8708,8 @@ button.swiper-pagination-bullet {
 
 .section-swiper-content-overlay {
 	z-index: 1;
-	border-top-color: rgba(240, 0, 255, 0.7);
+	/* border-top-color: rgba(240, 0, 255, 0.7); */
+    border-top-color: rgb(48 54 226 / 31%);
 	mix-blend-mode: soft-light;
 }
 
@@ -12166,14 +12167,15 @@ body:not(.lg-from-hash) .lg-outer.lg-start-zoom .lg-item.lg-complete .lg-object 
 }
 
 .material-parallax img {
-	display: none;
+	/* display: none;
 	position: absolute;
 	left: 50%;
 	bottom: 0;
 	min-width: 101%;
 	min-height: 101%;
 	max-width: none;
-	transform: translate3d(-50%, 0, 0);
+	transform: translate3d(-50%, 0, 0); */
+    transform: none !important;
 }
 
 .parallax-disabled {

@@ -31,10 +31,25 @@ class ParticipantController extends Controller
             ->where('fechatermino', '>', now('America/Lima'))
             ->where('activo', 1)
             ->get();
-        return view('landigpageindex', ['events' => $events]);
+
+        // $sql = "SELECT cp.descripcion, me.descripcion, me.estructura  FROM cap_capacitacion  cp
+        //     INNER JOIN per_cargoestructura pc ON cp.cargoestructura = pc.cargoestructura
+        //     INNER JOIN mae_estructura me ON me.estructura = pc.estructura
+        //     WHERE CURRENT_DATE() BETWEEN fechainicio AND fechatermino;
+        //     GROUP BY me.estructura";
+
+        $facultades = DB::connection('mysql_erp_integrado')->table('cap_capacitacion as cp')
+        ->join('per_cargoestructura as pc', 'cp.cargoestructura', '=', 'pc.cargoestructura')
+        ->join('mae_estructura as me', 'me.estructura', '=', 'pc.estructura')
+        ->select('me.estructura', DB::raw('GROUP_CONCAT(cp.descripcion) as descripcion_capacitacion'), DB::raw('GROUP_CONCAT(me.descripcion) as descripcion_estructura'))
+        ->whereRaw('CURRENT_DATE() BETWEEN cp.fechainicio AND cp.fechatermino')
+        ->where('cp.activo', 1)
+        ->groupBy('me.estructura')
+        ->get();
+        return view('landigpageindex', ['events' => $events, 'facultades' => $facultades]);
     }
 
-    public function registerForm($event_name)
+    public function registerForm($codeName, $event_name)
     {
         $event = DB::table('cap_capacitacion')
             ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado')
@@ -53,6 +68,25 @@ class ParticipantController extends Controller
             "concepto_inscripcion"  => $concepto_inscripcion,
             'concepto_certificado'  => $concepto_certificado
         ]);
+    }
+
+    public function eventsByFacultad($codeName){
+
+        // cortar cadena a partir del tercer caracter
+        $codeName = substr($codeName, 3);
+
+
+        $events_by_facultad = DB::connection('mysql_erp_integrado')->table('cap_capacitacion as cp')
+        ->join('per_cargoestructura as pc', 'cp.cargoestructura', '=', 'pc.cargoestructura')
+        ->join('mae_estructura as me', 'me.estructura', '=', 'pc.estructura')
+        ->select('me.estructura', 'cp.tipo as tipo_evento','cp.url_name', 'cp.descripcion as descripcion_capacitacion', 'me.descripcion as descripcion_estructura', 'cp.fechainicio', 'cp.fechatermino')
+        ->whereRaw('CURRENT_DATE() BETWEEN cp.fechainicio AND cp.fechatermino')
+        ->where('cp.activo', 1)
+        ->where('me.estructura', $codeName)
+        ->get();
+
+        // return json_encode($events_by_facultad);
+        return view('eventsByFacultad', ['events' => $events_by_facultad]);
     }
 
     public function confirmemailsuccess()
@@ -103,7 +137,7 @@ class ParticipantController extends Controller
 
 
         $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
-            '1', 
+            '1',
             $tipoDocumento,
             $numeroDocumento,
             $primerNombre,
@@ -134,8 +168,8 @@ class ParticipantController extends Controller
 
             // Send confirmation code
             Mail::send('emails.confirmation_code', [
-                "confirmation_code" => $confirmation_code, 
-                'names'         => $primerNombre, 
+                "confirmation_code" => $confirmation_code,
+                'names'         => $primerNombre,
                 'event'         => $event,
                 'payment_url'   => $payment_url
             ], function ($message) use ($request, $event_name) {
