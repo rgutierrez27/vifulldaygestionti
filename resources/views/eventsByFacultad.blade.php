@@ -6,7 +6,7 @@
         style="background-image: url(../../images/bg-breadcrumbs-01-1894x424.jpg);">
         <div class="container">
             <ul class="breadcrumbs-custom-path">
-                <li><a href="/">Inicio</a></li>
+                <li><a href="/" style="font-size: 1.5em;">Inicio</a></li>
                 {{-- <li><a href="#">Pages</a></li>
             <li class="active">Pricing</li> --}}
             </ul>
