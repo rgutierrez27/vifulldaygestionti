@@ -37,7 +37,7 @@ class ParticipantController extends Controller
         //     INNER JOIN mae_estructura me ON me.estructura = pc.estructura
         //     WHERE CURRENT_DATE() BETWEEN fechainicio AND fechatermino;
         //     GROUP BY me.estructura";
-
+        DB::connection('mysql_erp_integrado')->statement("SET SQL_MODE=''");
         $facultades = DB::connection('mysql_erp_integrado')->table('cap_capacitacion as cp')
         ->join('per_cargoestructura as pc', 'cp.cargoestructura', '=', 'pc.cargoestructura')
         ->join('mae_estructura as me', 'me.estructura', '=', 'pc.estructura')
