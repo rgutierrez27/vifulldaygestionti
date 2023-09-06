@@ -41,7 +41,7 @@ class ParticipantController extends Controller
         $facultades = DB::connection('mysql_erp_integrado')->table('cap_capacitacion as cp')
         ->join('per_cargoestructura as pc', 'cp.cargoestructura', '=', 'pc.cargoestructura')
         ->join('mae_estructura as me', 'me.estructura', '=', 'pc.estructura')
-        ->select('me.estructura', DB::raw('GROUP_CONCAT(cp.descripcion) as descripcion_capacitacion'), DB::raw('GROUP_CONCAT(me.descripcion) as descripcion_estructura'))
+        ->select('me.estructura', 'descripcion_capacitacion', 'descripcion_estructura')
         ->whereRaw('CURRENT_DATE() BETWEEN cp.fechainicio AND cp.fechatermino')
         ->where('cp.activo', 1)
         ->groupBy('me.estructura')
