@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [ParticipantController::class, 'landigpageindex'])->name('home');
 
-Route::get('/{codeName}', [ParticipantController::class, 'eventsByFacultad'])->name('registerForm');
+Route::get('/{codeName}', [ParticipantController::class, 'eventsByFacultad'])->name('registerFormx');
 
 // Route::get('/{eventName}', [ParticipantController::class, 'registerForm'])->name('registerForm');
 Route::get('/{codeName}/{eventName}', [ParticipantController::class, 'registerForm'])->name('registerForm');
