@@ -104,8 +104,8 @@ class ParticipantController extends Controller
     {
         $primerNombre       = $request->names1;
         $segundoNombre      = $request->names2;
-        $apellidoPaterno    = $request->lastname1;
-        $apellidoMaterno    = $request->lastname2;
+        $apellidoPaterno    = $request->lastNames1;
+        $apellidoMaterno    = $request->lastNames2;
         $numeroDocumento    = $request->dni;
         $email              = $request->email;
         $phone              = $request->phone;
@@ -149,7 +149,7 @@ class ParticipantController extends Controller
             '',
             $is_certificate,
             $event,
-            'auto',
+            'WEB-CONGRESO',
             $incription_concept  == '' ? null : $incription_concept,
             $certificate_concept == '' ? null : $certificate_concept
         ]);
