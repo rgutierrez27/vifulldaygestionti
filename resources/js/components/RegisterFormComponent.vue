@@ -106,7 +106,7 @@
                             <div class="col-md-6">
                                 <div class="form-wrap">
                                     <label for="contact-name2">Segundo Nombre</label>
-                                    <input class="form-input" :disabled="existData!=1?disabled:''" v-model="form.names2" id="contact-name2" type="text" name="name" required>
+                                    <input class="form-input" :disabled="existData!=1?disabled:''" v-model="form.names2" id="contact-name2" type="text" name="name">
                                     <!-- <label for="contact-name2">Segundo Nombre</label> -->
                                 </div>
                             </div>
@@ -120,7 +120,7 @@
                             <div class="col-md-6">
                                 <div class="form-wrap">
                                     <label for="contact-lastname2">Apellidos Materno</label>
-                                    <input class="form-input" :disabled="existData!=1?disabled:''" v-model="form.lastNames2" id="contact-lastname2" type="text" name="lastname2" required>
+                                    <input class="form-input" :disabled="existData!=1?disabled:''" v-model="form.lastNames2" id="contact-lastname2" type="text" name="lastname2">
                                     <!-- <label class="form-label" for="contact-lastname2">Apellidos Materno</label> -->
                                 </div>
                             </div>
