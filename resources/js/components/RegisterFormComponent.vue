@@ -270,9 +270,9 @@ export default {
             if (this.typeDocumentTemp == '01')
                 longitudStringPermitida = 8
             if (this.typeDocumentTemp == '05' || this.typeDocumentTemp == '07')
-                longitudStringPermitida = 12
+                longitudStringPermitida = this.dniTemp.length; //12
             if (this.typeDocumentTemp == '06')
-                longitudStringPermitida = 11
+                longitudStringPermitida = this.dniTemp.length; //11
 
 
             var letters = this.dniTemp.length;
