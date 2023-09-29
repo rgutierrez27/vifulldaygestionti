@@ -7,6 +7,10 @@ use App\Models\IzipayPaymentsTransaction;
 use App\Models\PaymentProof;
 use App\Models\PaymentProofDetail;
 use App\Models\Structure;
+use App\Repositories\AdministrativeRepositorie\AdministrativeRepositorie;
+use App\Repositories\PostulantRepositorie\PostulantRepositorie;
+use App\Repositories\StudentRepositorie\StudentRepositorie;
+use App\Repositories\TeacherRepositorie\TeacherRepositorie;
 use Carbon\Carbon;
 use Exception;
 use Illuminate\Http\Request;
@@ -56,6 +60,51 @@ class GeneralHelper{
 
     public static function findEsctructuraByNombre($nombre){
             CarreraPregrado::where('descripcion', $nombre)->exists();
+    }
+
+    public static function getRolesByPersonCode($person_code, $showOnlyStudent = false, $app_movil = false){
+        $student_records = StudentRepositorie::getStudentRecordsByPersonCode($person_code, $app_movil);
+        $administrative_records =  $showOnlyStudent == true ? [] : AdministrativeRepositorie::getAdministrativeRecordsByPersonCode($person_code);
+        $teacher_records = $showOnlyStudent == true ? [] : TeacherRepositorie::getTeacherRecordsByPersonCode($person_code);
+        $postulant_records = $showOnlyStudent == true ? [] : PostulantRepositorie::getPostulantRecordsByPersonCode($person_code);
+        $roles = [];
+
+        foreach ($student_records as $studen_records) {
+            $vigente = $studen_records->active;
+            $roles[] = [
+                'main_code'   => $studen_records->main_code,
+                'description' => "Estudiante $studen_records->main_code" . ($vigente == 1 ? '' : ' (Inactivo)'),
+                'role'        => 'Alumno',
+                'structure'   => $studen_records->description,
+                'status'      => $vigente == 1 ? 'a_active' : 'a_inactive'
+            ];
+        }
+
+        if($administrative_records){
+            $roles[] = [
+                'main_code'   => $administrative_records->main_code,
+                'description' => "Administrativo $administrative_records->main_code",
+                'role'        => 'Administrativo'
+            ];
+        }
+
+        if($teacher_records){
+            $roles[] = [
+                'main_code'   => $teacher_records->main_code,
+                'description' => "Docente $teacher_records->main_code",
+                'role'        => 'Docente'
+            ];
+        }
+
+        if($postulant_records){
+            $roles[] = [
+                'main_code'   => $postulant_records->main_code,
+                'description' => "Postulante $postulant_records->main_code",
+                'role'        => 'Postulante'
+            ];
+        }
+
+        return $roles;
     }
 
 }

@@ -102,6 +102,7 @@ class ParticipantController extends Controller
 
     public function addparticipant(Request $request)
     {
+        $user_rol_code      = $request->user_rol_code;
         $primerNombre       = $request->names1;
         $segundoNombre      = $request->names2;
         $apellidoPaterno    = $request->lastNames1;
@@ -136,7 +137,7 @@ class ParticipantController extends Controller
         }
 
 
-        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
+        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
             '1',
             $tipoDocumento,
             $numeroDocumento,
@@ -151,7 +152,8 @@ class ParticipantController extends Controller
             $event,
             'WEB-CONGRESO',
             $incription_concept  == '' ? null : $incription_concept,
-            $certificate_concept == '' ? null : $certificate_concept
+            $certificate_concept == '' ? null : $certificate_concept,
+            $user_rol_code == '' ? null : $user_rol_code
         ]);
         $resp =  $res[0]->result;
 
@@ -277,6 +279,7 @@ class ParticipantController extends Controller
         $persona =  PersonaUCT::where('numerodocumento', $dni)->first();
 
         if ($persona) {
+            $roles = GeneralHelper::getRolesByPersonCode($persona->persona);
             $data = [
                 'nombre1' => $persona->primernombre,
                 'nombre2' => $persona->segundonombre,
@@ -284,6 +287,7 @@ class ParticipantController extends Controller
                 'apellidoMaterno' => $persona->apellidomaterno,
                 'email' => $persona->email,
                 'telefono' => $persona->celular,
+                'roles' => $roles
             ];
             return  response()->json(["error" => false, 'data' => $data], 200);
         } else {

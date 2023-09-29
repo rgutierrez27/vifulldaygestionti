@@ -147,6 +147,15 @@
                                     </select>
                                 </div>
                             </div>
+                            <div class="col-md-6" v-if="existData == 3 && arrayRoles.length > 0">
+                                <div class="form-wrap2">
+                                    <label for="contact-name2">Participar como</label>
+                                    <select name="" id="" v-model="form.user_rol_code" style="width: 100%; min-height: 78px; padding: 6%;" required>
+                                        <option value="" disabled>-- SELECCIONAR UNA OPCIÓN --</option>
+                                        <option v-for="(item, index) in arrayRoles" :key="index" :value="item.codigo">{{item.desc}}</option>
+                                    </select>
+                                </div>
+                            </div>
                             <div class="col-md-6" v-if="certificate_concepts.length > 0 && is_certificate == true">
                                 <div class="form-wrap2">
                                     <label for="contact-name2">Certificado</label>
@@ -222,11 +231,13 @@ export default {
                 is_certificate: 0,
                 incription_concept: '',
                 certificate_concept: '',
+                user_rol_code: null
             },
             LoadingSearchDNI: false,
             loading: false,
             success: false,
             issucess:null,
+            arrayRoles: [],
             options: [
           { value: '1', text: 'aa' + ' - ' + '1' },
           { value: '2', text: 'ab' + ' - ' + '2' },
@@ -304,6 +315,28 @@ export default {
                             this.form.lastNames2 = resp.data.data.apellidoMaterno
                             this.form.email = resp.data.data.email
                             this.form.phone = resp.data.data.telefono
+                            this.arrayRoles = [];
+                            resp.data.data.roles.forEach(element => {
+                                if (element.role == 'Alumno') {
+                                    this.arrayRoles.push({
+                                        codigo: element.main_code,
+                                        desc: 'Estudiante de ' +' '+element.structure
+                                    })
+
+                                } else if(element.role == 'Administrativo') {
+                                    this.arrayRoles.push({
+                                        codigo: element.main_code,
+                                        desc: element.description
+                                    })
+
+                                } else if(element.role == 'Docente') {
+                                    this.arrayRoles.push({
+                                        codigo: element.main_code,
+                                        desc: element.description
+                                    })
+
+                                }
+                            });
                             this.form.organization = ""
                              this.disabled= true;
                              this.searchDone = true;
@@ -337,7 +370,7 @@ export default {
                         this.form.organization = ""
                     }
 
-console.log(this.disableInputPhone);
+
                 }, 600);
             }
         },
