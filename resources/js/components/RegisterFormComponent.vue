@@ -326,13 +326,13 @@ export default {
                                 } else if(element.role == 'Administrativo') {
                                     this.arrayRoles.push({
                                         codigo: element.main_code,
-                                        desc: element.description
+                                        desc: element.role
                                     })
 
                                 } else if(element.role == 'Docente') {
                                     this.arrayRoles.push({
                                         codigo: element.main_code,
-                                        desc: element.description
+                                        desc: element.role
                                     })
 
                                 }
