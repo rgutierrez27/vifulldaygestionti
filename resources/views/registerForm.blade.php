@@ -28,6 +28,7 @@
     const event_                = @json($event);
     const concepto_inscripcion  = @json($concepto_inscripcion);
     const concepto_certificado  = @json($concepto_certificado);
+    const requiere_certificado  = @json($requiere_certificado)
 </script>
 <script src="/js/app.js"></script>
 @endsection

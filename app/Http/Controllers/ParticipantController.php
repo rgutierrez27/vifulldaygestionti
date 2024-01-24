@@ -52,7 +52,7 @@ class ParticipantController extends Controller
     public function registerForm($codeName, $event_name)
     {
         $event = DB::table('cap_capacitacion')
-            ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado')
+            ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado', 'cap_capacitacion.requiere_certificado')
             ->where('url_name', $event_name)
             ->where('fechatermino', '>', now('America/Lima'))
             ->first();
@@ -62,11 +62,13 @@ class ParticipantController extends Controller
 
         $concepto_inscripcion = Concept::select('descripcioncompleta', 'importe', 'concepto')->with('detail')->find($event->concepto_inscripcion);
         $concepto_certificado = Concept::select('descripcioncompleta', 'importe', 'concepto')->with('detail')->find($event->concepto_certificado);
+        $requiere_certificado = $event->requiere_certificado;
 
         return view('registerForm', [
             "event"                 => $event,
             "concepto_inscripcion"  => $concepto_inscripcion,
-            'concepto_certificado'  => $concepto_certificado
+            'concepto_certificado'  => $concepto_certificado,
+            'requiere_certificado'  => $requiere_certificado
         ]);
     }
 
@@ -79,7 +81,7 @@ class ParticipantController extends Controller
         $events_by_facultad = DB::connection('mysql_erp_integrado')->table('cap_capacitacion as cp')
         ->join('per_cargoestructura as pc', 'cp.cargoestructura', '=', 'pc.cargoestructura')
         ->join('mae_estructura as me', 'me.estructura', '=', 'pc.estructura')
-        ->select('me.estructura', 'cp.tipo as tipo_evento','cp.url_name', 'cp.descripcion as descripcion_capacitacion', 'me.descripcion as descripcion_estructura', 'cp.fechainicio', 'cp.fechatermino')
+        ->select('me.estructura', 'cp.tipo as tipo_evento','cp.url_name', 'cp.descripcion as descripcion_capacitacion', 'me.descripcion as descripcion_estructura', 'cp.fechainicio', 'cp.fechatermino', 'cp.url_imagen')
         ->whereRaw('CURRENT_DATE() BETWEEN cp.fechainicio AND cp.fechatermino')
         ->where('cp.activo', 1)
         ->where('me.estructura', $codeName)

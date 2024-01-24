@@ -172,7 +172,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-12">
+                            <div class="col-12" v-if="showDivCertificate">
                                 <div class="form-wrap">
                                     <label>
                                         <input type='checkbox' id="certificateid" v-model="is_certificate">
@@ -211,6 +211,7 @@ export default {
             disableInputEmail: false,
             disableInputPhone: false,
             is_certificate: false,
+            showDivCertificate: false,
             searchDone:false,
             ErrorNumDoc: false,
             disabled: true,
@@ -448,6 +449,7 @@ export default {
     },
     mounted(){
         this.initDataConcepts();
+        this.showDivCertificate = requiere_certificado==1?true:false
     },
     watch:{
         is_certificate(val){
