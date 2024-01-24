@@ -38,7 +38,7 @@
         <section class="parallax-container section" data-parallax-img="https://i.imgur.com/kjrVXyM.jpg">
             <div class="parallax-content section-lg context-dark text-center">
                 <div class="container">
-                    <h4 class="text-secondary">Congresos</h4>
+                    <h4 class="text-secondary">Talleres</h4>
                     {{-- <h3>Conoce nuestros próximos eventos.</h3> --}}
                     <div class="row row-30">
                         @foreach ($events as $event)

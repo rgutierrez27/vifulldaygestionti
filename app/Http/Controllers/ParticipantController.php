@@ -51,8 +51,9 @@ class ParticipantController extends Controller
 
     public function registerForm($codeName, $event_name)
     {
-        $event = DB::table('cap_capacitacion')
-            ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado', 'cap_capacitacion.requiere_certificado')
+        $event = DB::table('cap_capacitacion As cap')
+            ->select('cap.capacitacion', 'cap.descripcion', 'cap.concepto_inscripcion', 'cap.concepto_certificado', 'cap.requiere_certificado', 'ct.descripcion as tipodescripcion')
+            ->join('cap_tipo AS ct', 'cap.tipo', '=', 'ct.tipo')
             ->where('url_name', $event_name)
             ->where('fechatermino', '>', now('America/Lima'))
             ->first();
@@ -178,7 +179,7 @@ class ParticipantController extends Controller
                 ? 'https://pagonline.uct.edu.pe/externos'
                 : 'https://pasarelatest.uct.edu.pe/externos';
             }
-            
+
 
             // Send confirmation code
             Mail::send('emails.confirmation_code', [

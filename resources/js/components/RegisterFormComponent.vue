@@ -6,7 +6,7 @@
                 <li><a href="/">{{event_.descripcion}}</a></li>
                 <li class="active">Formulario de registro</li>
             </ul>
-            <h3 class="breadcrumbs-custom-title">Participa en nuestro evento</h3>
+            <h3 class="breadcrumbs-custom-title">Participa en nuestro {{event_.tipodescripcion}}</h3>
             </div>
         </section>
         <section class="section section-lg bg-default text-center">
