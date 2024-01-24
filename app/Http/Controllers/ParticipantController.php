@@ -117,6 +117,7 @@ class ParticipantController extends Controller
         $incription_concept     = $request->incription_concept;
         $certificate_concept    = $request->certificate_concept;
         $event                  = $request->event;
+        $rolesCount             = $request->rolesCount ?? 0;
 
 
         if ($tipoDocumento == '01') {
@@ -166,12 +167,22 @@ class ParticipantController extends Controller
                 ->where('capacitacion', $event)
                 ->first();
             $event_name = $event->descripcion;
-            $payment_url = config('app.env', 'production') == 'production'
+            $is_internal = $rolesCount > 0;
+
+            if($is_internal){
+                $payment_url = config('app.env', 'production') == 'production'
+                ? 'https://pagonline.uct.edu.pe'
+                : 'https://pasarelatest.uct.edu.pe';
+            }else{
+                $payment_url = config('app.env', 'production') == 'production'
                 ? 'https://pagonline.uct.edu.pe/externos'
                 : 'https://pasarelatest.uct.edu.pe/externos';
+            }
+            
 
             // Send confirmation code
             Mail::send('emails.confirmation_code', [
+                "is_internal"       => $is_internal,
                 "confirmation_code" => $confirmation_code,
                 'names'         => $primerNombre,
                 'event'         => $event,

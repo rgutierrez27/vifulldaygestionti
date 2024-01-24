@@ -147,7 +147,7 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="col-md-6" v-if="existData == 3 && arrayRoles.length > 0">
+                            <!-- <div class="col-md-6" v-if="existData == 3 && arrayRoles.length > 0">
                                 <div class="form-wrap2">
                                     <label for="contact-name2">Participar como</label>
                                     <select name="" id="" v-model="form.user_rol_code" style="width: 100%; min-height: 78px; padding: 6%;" required>
@@ -155,7 +155,7 @@
                                         <option v-for="(item, index) in arrayRoles" :key="index" :value="item.codigo">{{item.desc}}</option>
                                     </select>
                                 </div>
-                            </div>
+                            </div> -->
                             <div class="col-md-6" v-if="certificate_concepts.length > 0 && is_certificate == true">
                                 <div class="form-wrap2">
                                     <label for="contact-name2">Certificado</label>
@@ -259,6 +259,7 @@ export default {
 
             axios.post(`/addparticipant`,{
                 ...params,
+                rolesCount: this.arrayRoles.length,
                 event: event_.capacitacion
             })
             .then((data) =>{

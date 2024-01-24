@@ -305,6 +305,15 @@
                 </div>
                 <h6>Gracias por registarte</h6>
                 <h2>{{$names}}</h2>
+                @if ($is_internal == true)
+                    <h5>Pasos para realizar pago.</h5>
+                    <ol>
+                        <li>Ir a <a href="{{$payment_url}}">pasarela de pagos</a> y iniciar sesión.</li>
+                        <li>En la interfaz de pagos, seleccionar la opción "Otros".</li>
+                        <li>Realizar el pago.</li>
+                    </ol>
+                @endif
+                <br>
                 <p>
                     @if ($pago_inscripcion && $pago_certificado)
                         <b>Para realizar el pago de tu inscripción o certificado por favor ingresar al siguiente enlace.</b>    
@@ -321,7 +330,6 @@
                 <a href="{{$payment_url}}" target="_blank" style="cursor: pointer;" type="button">
                     <button class="btn">IR A PAGAR</button>
                 </a>
-
             </div>
         </div>
     </div>
