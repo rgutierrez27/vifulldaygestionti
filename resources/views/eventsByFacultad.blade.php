@@ -58,7 +58,7 @@
                                             @php
                                                 $url_imagen = $event->url_imagen == null ? 'https://i.imgur.com/7Vrv3tE.jpg' : $event->url_imagen;
                                             @endphp
-                                            <img src="{{ $event->url_imagen }}" alt="">
+                                            <img src="{{ $url_imagen }}" alt="">
                                     </div>
                                 </div>
                             </div>
