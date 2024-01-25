@@ -164,7 +164,7 @@ class ParticipantController extends Controller
         if ($resp == 'OK') {
             $confirmation_code = Str::random(25);
             $event = DB::table('cap_capacitacion')
-                ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado')
+                ->select('capacitacion', 'descripcion', 'concepto_inscripcion', 'concepto_certificado', 'require_pagos')
                 ->where('capacitacion', $event)
                 ->first();
             $event_name = $event->descripcion;

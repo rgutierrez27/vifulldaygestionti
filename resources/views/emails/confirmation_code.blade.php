@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación registro en evento {{$event->descripcion}}</title>
+    <title>Confirmación registro en evento {{ $event->descripcion }}</title>
     <style>
         @import url('https://fonts.googleapis.com/css?family=Muli&display=swap');
 
@@ -14,7 +15,7 @@
 
 
         body {
-            background-image: linear-gradient( 45deg , #008891, #10266b);
+            background-image: linear-gradient(45deg, #008891, #10266b);
             font-family: 'Muli', sans-serif;
             display: flex;
             align-items: center;
@@ -24,9 +25,7 @@
             margin: 0;
         }
 
-        .courses-container {
-
-        }
+        .courses-container {}
 
         .course {
             background-color: #fff;
@@ -136,7 +135,7 @@
         .social-panel {
             background-color: #fff;
             border-radius: 16px;
-            box-shadow: 0 16px 31px -17px rgba(0,31,97,0.6);
+            box-shadow: 0 16px 31px -17px rgba(0, 31, 97, 0.6);
             border: 5px solid #001F61;
             display: flex;
             flex-direction: column;
@@ -282,18 +281,19 @@
         }
     </style>
 </head>
+
 <body>
     @php
         $ce = $event->concepto_inscripcion;
         $cc = $event->concepto_certificado;
-        $pago_inscripcion = ($ce == null || Str::length($ce) == 0) ? false : true;
-        $pago_certificado = ($cc == null || Str::length($cc) == 0) ? false : true;
+        $pago_inscripcion = $ce == null || Str::length($ce) == 0 ? false : true;
+        $pago_certificado = $cc == null || Str::length($cc) == 0 ? false : true;
     @endphp
     <div class="courses-container">
         <div class="course">
             <div class="course-preview">
                 <h6>Evento</h6>
-                <h2>{{$event->descripcion}}</h2>
+                <h2>{{ $event->descripcion }}</h2>
                 {{-- <a href="#" target="_blank">Ver Congreso <i class="fas fa-chevron-right"></i></a> --}}
             </div>
             <div class="course-info">
@@ -304,32 +304,37 @@
                     </span>
                 </div>
                 <h6>Gracias por registarte</h6>
-                <h2>{{$names}}</h2>
-                @if ($is_internal == true)
-                    <h5>Pasos para realizar pago.</h5>
-                    <ol>
-                        <li>Ir a <a href="{{$payment_url}}">pasarela de pagos</a> y iniciar sesión.</li>
-                        <li>En la interfaz de pagos, seleccionar la opción "Otros".</li>
-                        <li>Realizar el pago.</li>
-                    </ol>
-                @endif
-                <br>
-                <p>
-                    @if ($pago_inscripcion && $pago_certificado)
-                        <b>Para realizar el pago de tu inscripción o certificado por favor ingresar al siguiente enlace.</b>    
-                    @else
-                        @if ($pago_inscripcion)
-                            <b>Para realizar el pago de tu inscripción por favor ingresar al siguiente enlace.</b>
-                        @endif
-                        @if ($pago_certificado)
-                            <b>Para realizar el pago de tu certificado por favor ingresar al siguiente enlace.</b>
-                        @endif
+                <h2>{{ $names }}</h2>
+
+                @if ($event->require_pagos == 1)
+                    @if ($is_internal == true)
+                        <h5>Pasos para realizar pago.</h5>
+                        <ol>
+                            <li>Ir a <a href="{{ $payment_url }}">pasarela de pagos</a> y iniciar sesión.</li>
+                            <li>En la interfaz de pagos, seleccionar la opción "Otros".</li>
+                            <li>Realizar el pago.</li>
+                        </ol>
                     @endif
-                </p>
-                <br>
-                <a href="{{$payment_url}}" target="_blank" style="cursor: pointer;" type="button">
-                    <button class="btn">IR A PAGAR</button>
-                </a>
+                    <br>
+                    <p>
+                        @if ($pago_inscripcion && $pago_certificado)
+                            <b>Para realizar el pago de tu inscripción o certificado por favor ingresar al siguiente
+                                enlace.</b>
+                        @else
+                            @if ($pago_inscripcion)
+                                <b>Para realizar el pago de tu inscripción por favor ingresar al siguiente enlace.</b>
+                            @endif
+                            @if ($pago_certificado)
+                                <b>Para realizar el pago de tu certificado por favor ingresar al siguiente enlace.</b>
+                            @endif
+                        @endif
+                    </p>
+                    <br>
+                    <a href="{{ $payment_url }}" target="_blank" style="cursor: pointer;" type="button">
+                        <button class="btn">IR A PAGAR</button>
+                    </a>
+                @endif
+
             </div>
         </div>
     </div>
@@ -337,8 +342,9 @@
 
 
     <div class="floating-text">
-       Universidad Católica de Trujillo <br>
+        Universidad Católica de Trujillo <br>
     </div>
 
 </body>
+
 </html>
