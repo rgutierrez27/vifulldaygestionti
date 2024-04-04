@@ -10,7 +10,7 @@ class StudentRepositorie{
             ->table('mae_alumno AS a')
             ->join('mae_estructura AS e', 'a.estructura', '=', 'e.estructura')
             ->where('a.persona', $person_code)
-            ->select('a.alumno as main_code', 'e.descripcion as description', 'a.vigente as active');
+            ->select('a.alumno as main_code', 'e.descripcion as description', 'a.vigente as active', 'condicionalumno');
 
         if($app_movil == true){
             $student_records = $student_records->where('a.vigente', 1);

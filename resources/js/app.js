@@ -24,6 +24,7 @@ import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('register-form-component', require('./components/RegisterFormComponent.vue').default);
+Vue.component('register-form-diplomado-component', require('./components/RegisterFormDiplomadoComponent.vue').default);
 Vue.component('lista-participantes', require('./components/ListaParticipante.vue').default);
 Vue.component('sorteo-participantes', require('./components/SorteoParticipante.vue').default);
 

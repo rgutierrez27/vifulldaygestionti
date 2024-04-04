@@ -19,7 +19,13 @@
 @section('SectionRegisterForm')
 
 <div id="app">
-    <register-form-component></register-form-component>
+
+    @if ($action == 'register')
+        <register-form-diplomado-component></register-form-diplomado-component>
+    @else
+        <register-form-component></register-form-component>
+    @endif
+
 </div>
 @endsection
 

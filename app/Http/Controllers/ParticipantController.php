@@ -49,7 +49,7 @@ class ParticipantController extends Controller
         return view('landigpageindex', ['events' => $events, 'facultades' => $facultades]);
     }
 
-    public function registerForm($codeName, $event_name)
+    public function registerForm( $codeName, $event_name, $action = null)
     {
         $event = DB::table('cap_capacitacion As cap')
             ->select('cap.capacitacion', 'cap.descripcion', 'cap.concepto_inscripcion', 'cap.concepto_certificado', 'cap.requiere_certificado', 'ct.descripcion as tipodescripcion')
@@ -69,7 +69,8 @@ class ParticipantController extends Controller
             "event"                 => $event,
             "concepto_inscripcion"  => $concepto_inscripcion,
             'concepto_certificado'  => $concepto_certificado,
-            'requiere_certificado'  => $requiere_certificado
+            'requiere_certificado'  => $requiere_certificado,
+            'action'                => $action
         ]);
     }
 

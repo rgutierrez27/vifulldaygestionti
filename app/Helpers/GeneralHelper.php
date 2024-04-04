@@ -73,7 +73,7 @@ class GeneralHelper{
             $vigente = $studen_records->active;
             $roles[] = [
                 'main_code'   => $studen_records->main_code,
-                'description' => "Estudiante $studen_records->main_code" . ($vigente == 1 ? '' : ' (Inactivo)'),
+                'description' => "Estudiante ". ($studen_records->condicionalumno == '03' ? 'EGRESADO ': 'NOEGRESADO ') . $studen_records->main_code . ($vigente == 1 ? '' : ' (Inactivo)'),
                 'role'        => 'Alumno',
                 'structure'   => $studen_records->description,
                 'status'      => $vigente == 1 ? 'a_active' : 'a_inactive'
