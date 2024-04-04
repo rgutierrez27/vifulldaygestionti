@@ -41,4 +41,4 @@ Route::get('validardni/{dni}/{tipoDocumento}', 'ParticipantController@validardni
 Route::get('/sorteoIframe', [ParticipantController::class, 'sorteoIframe'])->name('iframesorteo');
 
 
-Route::get('inscripcion-diplomado/{codeName}/{eventName}/{action?}', [ParticipantController::class, 'registerForm'])->name('registerForm');
+Route::get('inscripcion-diplomado/{codeName}/{eventName}/{action?}', [ParticipantController::class, 'registerForm'])->name('registerFormDiplomado');
