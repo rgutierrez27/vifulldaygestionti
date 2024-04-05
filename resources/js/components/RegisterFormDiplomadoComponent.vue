@@ -349,6 +349,7 @@ export default {
                              this.disabled= true;
                              this.searchDone = true;
                         }else{
+                            this.assignInscriptionConcept([]);
                             this.existData = 2 // 2: Se hace consulta y no existe
                             this.disabled= false;
                             this.form.typeDocument = this.typeDocumentTemp
@@ -390,8 +391,10 @@ export default {
 
             let rol_descripcion = '';
             // si no tiene roles, es externo
+            console.log(rols);
             if (rols.length == 0) {
                 rol_descripcion = 'Publico General'
+                // return;
             }
 
             rol_descripcion = this.getDescriptionByPriority(rols)
@@ -404,9 +407,11 @@ export default {
             // si no tiene roles, es externo
             if (rols.length == 0) {
                 rol_descripcion = 'Publico General'
+                // return;
             }
 
             rol_descripcion = this.getDescriptionByPriority(rols)
+
             var id_concepto_cert = this.formatIdByDescription(concepto_certificado.detail, rol_descripcion);
             this.form.certificate_concept = id_concepto_cert;
         },
