@@ -232,7 +232,9 @@ export default {
                 is_certificate: 0,
                 incription_concept: '',
                 certificate_concept: '',
-                user_rol_code: null
+                user_rol_code: null,
+                code_student_egre: '',
+                is_form_diplomado: 1
             },
             LoadingSearchDNI: false,
             loading: false,
@@ -389,13 +391,15 @@ export default {
 
         assignInscriptionConcept(rols){
 
+            console.log(rols);
             let rol_descripcion = '';
             // si no tiene roles, es externo
-            console.log(rols);
             if (rols.length == 0) {
                 rol_descripcion = 'Publico General'
                 // return;
             }
+
+            this.form.code_student_egre = this.findMainCodeByDescription(rols, "Estudiante EGRESADO");
 
             rol_descripcion = this.getDescriptionByPriority(rols)
             var id_concepto_insc = this.formatIdByDescription(concepto_inscripcion.detail, rol_descripcion);
@@ -414,6 +418,11 @@ export default {
 
             var id_concepto_cert = this.formatIdByDescription(concepto_certificado.detail, rol_descripcion);
             this.form.certificate_concept = id_concepto_cert;
+        },
+
+        findMainCodeByDescription(data, description) {
+            const foundObj = data.find(obj => obj.description.includes(description));
+            return foundObj ? foundObj.main_code : '';
         },
 
         getDescriptionByPriority(data) {

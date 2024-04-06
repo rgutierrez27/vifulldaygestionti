@@ -120,6 +120,8 @@ class ParticipantController extends Controller
         $certificate_concept    = $request->certificate_concept;
         $event                  = $request->event;
         $rolesCount             = $request->rolesCount ?? 0;
+        $code_student_egre             = $request->code_student_egre ?? '';
+        $is_form_diplomado             = $request->is_form_diplomado ?? 0;
 
 
         if ($tipoDocumento == '01') {
@@ -142,7 +144,7 @@ class ParticipantController extends Controller
         }
 
 
-        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
+        $res = DB::connection('mysql_erp_integrado')->select("CALL sp_capInsertarParticipantesWeb(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", [
             '1',
             $tipoDocumento,
             $numeroDocumento,
@@ -158,7 +160,9 @@ class ParticipantController extends Controller
             'WEB-CONGRESO',
             $incription_concept  == '' ? null : $incription_concept,
             $certificate_concept == '' ? null : $certificate_concept,
-            $user_rol_code == '' ? null : $user_rol_code
+            $user_rol_code == '' ? null : $user_rol_code,
+            $code_student_egre,
+            $is_form_diplomado
         ]);
         $resp =  $res[0]->result;
 
