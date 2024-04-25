@@ -3,10 +3,10 @@
         <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(../../../images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_ && issucess == null">
             <div class="container">
             <ul class="breadcrumbs-custom-path">
-                <li><a href="/">{{event_.descripcion}}</a></li>
+                <li><a href="/">Participa en nuestro Diplomado {{event_.tipodescripcion}}</a></li>
                 <li class="active">Formulario de registro</li>
             </ul>
-            <h3 class="breadcrumbs-custom-title">Participa en nuestro Diplomado {{event_.tipodescripcion}}</h3>
+            <h3 class="breadcrumbs-custom-title">  {{event_.descripcion}}</h3>
             </div>
         </section>
         <section class="section section-lg bg-default text-center">
@@ -21,7 +21,7 @@
                         <div class="parallax-content section-lg context-dark text-center">
                             <div class="container">
                                 <h6 class="text-secondary">{{form.names1}} muchas gracias por registrarse :)</h6>
-                                <h3>Se le notificará a su correo electrónico para continuar con el proceso.</h3>
+                                <h3>Se remite a su correo electrónico los accesos para continuar con el proceso de pago</h3>
                                 <div class="group">
                                     <a class="button button-secondary box-with-triangle-right" href="/" data-triangle=".button-overlay">
                                         <span>Ir al inicio</span>
@@ -391,7 +391,6 @@ export default {
 
         assignInscriptionConcept(rols){
 
-            console.log(rols);
             let rol_descripcion = '';
             // si no tiene roles, es externo
             if (rols.length == 0) {
@@ -483,10 +482,16 @@ export default {
             this.form.phone = "";
             this.form.organization  = null;
             this.form.is_certificate = false;
+            this.is_certificate = false;
+            this.form.incription_concept = '';
+            this.form.certificate_concept = '';
             this.LoadingSearchDNI = false;
             this.loading = false;
             this.success = false;
             this.issucess = null;
+            this.arrayRolesOrigin = [];
+            this.arrayRoles= [];
+
         },
         changEvent(){
             alert(this.typeDocumentTemp);
