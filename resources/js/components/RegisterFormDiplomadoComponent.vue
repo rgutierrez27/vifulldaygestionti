@@ -1,6 +1,6 @@
 <template>
     <div>
-        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(../images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_ && issucess == null">
+        <section class="breadcrumbs-custom bg-image context-dark" style="background-image: url(../../../images/bg-breadcrumbs-01-1894x424.jpg);" v-if="event_ && issucess == null">
             <div class="container">
             <ul class="breadcrumbs-custom-path">
                 <li><a href="/">{{event_.descripcion}}</a></li>
