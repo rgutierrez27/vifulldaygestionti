@@ -21,10 +21,11 @@
                         <div class="parallax-content section-lg context-dark text-center">
                             <div class="container">
                                 <h6 class="text-secondary">{{form.names1}} muchas gracias por registrarse :)</h6>
-                                <h3>Se le notificará a su correo electrónico para continuar con el proceso.</h3>
+                                <h3>Se enviará una notificación a su correo electrónico para continuar con el proceso</h3>
+                                <h4>En unos segundos, será redirigido a nuestra pasarela de pago</h4>
                                 <div class="group">
-                                    <a class="button button-secondary box-with-triangle-right" href="/" data-triangle=".button-overlay">
-                                        <span>Ir al inicio</span>
+                                    <a class="button button-secondary box-with-triangle-right" :href="url_payment" data-triangle=".button-overlay">
+                                        <span>Realizar Pago</span>
                                         <span class="button-overlay" style="border-top-width: 60.4px; border-left-width: 187.875px;"></span>
                                     </a>
                                 </div>
@@ -239,6 +240,7 @@ export default {
             success: false,
             issucess:null,
             arrayRoles: [],
+            url_payment:'',
             options: [
           { value: '1', text: 'aa' + ' - ' + '1' },
           { value: '2', text: 'ab' + ' - ' + '2' },
@@ -264,7 +266,8 @@ export default {
             })
             .then((data) =>{
                 if (data.data.message == 'OK') {
-                    this.issucess = true
+                    this.issucess = true;
+                    this.confirmActionAfterRegistrar(data.data.payment_url);
                 }else{
                     this.issucess = false
                     this.messageError = "Ya se encuentra registrado"
@@ -446,7 +449,14 @@ export default {
             }
 
             this.event_ = event_
-        }
+        },
+        confirmActionAfterRegistrar(url){
+          this.url_payment = url;
+          setTimeout(() => {
+            window.open(url, '_self');
+          }, 2500);
+
+        },
     },
     mounted(){
         this.initDataConcepts();

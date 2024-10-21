@@ -175,6 +175,7 @@ class ParticipantController extends Controller
             $event_name = $event->descripcion;
             $is_internal = $rolesCount > 0;
 
+            $payment_url = 'https://pagonline.uct.edu.pe';
             if($is_internal){
                 $payment_url = config('app.env', 'production') == 'production'
                 ? 'https://pagonline.uct.edu.pe'
@@ -198,7 +199,7 @@ class ParticipantController extends Controller
             });
         }
 
-        return response()->json(["error" => false, 'message' => $resp], 200);
+        return response()->json(["error" => false, 'message' => $resp, 'payment_url' => $payment_url], 200);
     }
 
 
