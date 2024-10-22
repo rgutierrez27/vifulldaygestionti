@@ -5,6 +5,7 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use App\Services\CapacitacionService\QRCapacitacionService;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 class GenerarQRCapacitacionMasivo extends Command
 {
@@ -46,22 +47,31 @@ class GenerarQRCapacitacionMasivo extends Command
      */
     public function handle()
     {
-        // Log::info('entra');
         $capacitacion = $this->argument('capacitacion');
-        // Log::info($capacitacion);
         $participantes = $this->qrCapacitacionService->obtenerParticipantes($capacitacion);
-        Log::info(json_encode($participantes));
-        try {
-            foreach ($participantes as $participante) {
-                $this->qrCapacitacionService->generarQRyenviar($participante);
-                // Mostrar mensaje en la consola para cada participante
-                // Log::info("QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}");
-                echo "QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}\n";
+        $participante = $participantes->first();
+    
+        if ($participante) {
+            $fechaInicioCapacitacion = $participante->fechainiciocapacitacion;            
+            $fechaActualLima = Carbon::now('America/Lima');
+    
+            if (!empty($fechaInicioCapacitacion) && $fechaActualLima->isBefore(Carbon::parse($fechaInicioCapacitacion))) {
+                try {
+                    foreach ($participantes as $participante) {
+                        $this->qrCapacitacionService->generarQRyenviar($participante);
+                        // Log::info("QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}");
+                        echo "QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}\n";
+                    }
+                } catch (\Exception $e) {
+                    $this->error("Error al generar o enviar los códigos QR: " . $e->getMessage());
+                }
+            } else {
+                echo "La fecha actual no es antes de la fecha de inicio de capacitación.";
             }
-        } catch (\Exception $e) {
-            $this->error("Error al generar o enviar los códigos QR: " . $e->getMessage());
+        } else {
+            echo "No se encontraron participantes para la capacitación.";
         }
-
+    
         return 0;
     }
 }

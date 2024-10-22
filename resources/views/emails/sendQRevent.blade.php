@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Confirmación registro en evento {{ $event->descripcion }}</title>
+    <title>Confirmación registro en evento {{ $nameEvent }}</title>
     <style>
         /* Basic styling for the email */
         body {
@@ -65,19 +65,17 @@
 <body>
     <div class="container">
         <div class="header">
-            <h1>{{ $event->descripcion }}</h1>
+            <h1>{{ $nameEvent }}</h1>
         </div>
         <div class="content">
-            <h2>Gracias por registrarte, {{ $names }}!</h2>
+            <h2>Gracias por registrarte, {{ $participante->nombrecompleto }}</h2>
             <p>Por favor, encuentra a continuación tu código QR para verificar tu registro en el evento:</p>
 
             <div class="qr-code">
-                <!-- Replace 'path_to_qr_code_image' with the actual path to the QR code image -->
-                <img src="path_to_qr_code_image" alt="Código QR" style="max-width: 100%; height: auto; border: none;" />
+                <img src="{{ $ImagePath }}" alt="Código QR" style="max-width: 100%; height: auto; border: none;" />
             </div>
 
-            <p>Si necesitas realizar algún pago, sigue las instrucciones en el enlace a continuación.</p>
-            {{-- Aquí podrías incluir más detalles sobre el evento, pagos, etc. --}}
+            <p>Si aún no realizas el pago, realizalo en <a href="{{ $payment_url }}">pasarela de pagos</a>.</p>
         </div>
         <div class="footer">
             <p>Universidad Católica de Trujillo</p>
