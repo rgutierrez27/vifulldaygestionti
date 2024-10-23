@@ -60,7 +60,9 @@ class GenerarQRCapacitacionMasivo extends Command
                     foreach ($participantes as $participante) {
                         $this->qrCapacitacionService->generarQRyenviar($participante);
                         // Log::info("QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}");
-                        echo "QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}\n";
+                        echo "QR generado de {$participante->auxiliar} y enviado a: {$participante->email} para la capacitación: {$capacitacion}\n";
+
+                        sleep(3);
                     }
                 } catch (\Exception $e) {
                     $this->error("Error al generar o enviar los códigos QR: " . $e->getMessage());

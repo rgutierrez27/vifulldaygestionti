@@ -107,7 +107,7 @@ class QRCapacitacionService{
                     ]);
             });
         } else {
-            Log::info("No se puede enviar el QR, el participante no tiene email: " . $participante->persona);
+            Log::info("No se puede enviar el QR, el participante no tiene email: " . $participante->auxiliar);
         }
     }
 }
