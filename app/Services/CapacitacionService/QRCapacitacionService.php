@@ -45,9 +45,9 @@ class QRCapacitacionService{
                 ->where('capacitacion', $participante->capacitacion) 
                 ->where('persona', $participante->persona) 
                 ->where('auxiliar', $participante->auxiliar) 
-                ->update(['rutaqr' => Storage::path($filePath)]);
+                ->update(['rutaqr' =>  ".../capacitacion/qr/{$participante->capacitacion}/{$fileName}"]);
         } 
-        $this->enviarQR($participante, Storage::path($filePath));
+        $this->enviarQR($participante, $filePath);
     }
     
     public function obtenerParticipantes($capacitacion)
@@ -84,18 +84,28 @@ class QRCapacitacionService{
         return $participantes;
     }
 
-    public function enviarQR($participante, $qrFilePath)
+    public function enviarQR($participante, $filePath)
     {
-        $payment_url = config('app.env', 'production') == 'production'
+        $payment_url        = config('app.env', 'production') == 'production'
             ? 'https://pagonline.uct.edu.pe'
             : 'https://pasarelatest.uct.edu.pe';
-    
+
+        $congreso_url       = config('app.env', 'production') == 'production'
+            ? 'https://congresos.uct.edu.pe'
+            : 'https://congresotest.uct.edu.pe';
+
+        $qrFilePath         = Storage::path($filePath);
+        $filePath           = str_replace('public/', '/storage/', $filePath);
+
+        $img_qr_congreso    = $congreso_url . $filePath;
+        Log::info($img_qr_congreso);
+
         if (!empty($participante->email)) {
             Mail::send('emails.sendQRevent', [
                 'participante'  => $participante,
                 'nameEvent'     => $participante->descripcion,
                 'payment_url'   => $payment_url,
-                'ImagePath'     => $qrFilePath
+                'ImagePath'     => $img_qr_congreso
             ], function ($message) use ($participante, $qrFilePath) {
                 $message->to($participante->email, $participante->nombrecompleto)
                     ->subject("ACCESO A {$participante->descripcion}")
