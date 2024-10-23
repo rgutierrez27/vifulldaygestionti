@@ -14,7 +14,7 @@ class GenerarQRCapacitacionMasivo extends Command
      *
      * @var string
      */
-    protected $signature = 'qr:generar-masivo {capacitacion}';
+    protected $signature = 'qr:generar-masivo';
 
     /**
      * The console command description.
@@ -47,9 +47,10 @@ class GenerarQRCapacitacionMasivo extends Command
      */
     public function handle()
     {
-        $capacitacion = $this->argument('capacitacion');
-        $participantes = $this->qrCapacitacionService->obtenerParticipantes($capacitacion);
-        $participante = $participantes->first();
+        // $capacitacion = $this->argument('capacitacion');
+        $capacitacion   = 'CP20240010';
+        $participantes  = $this->qrCapacitacionService->obtenerParticipantes($capacitacion);
+        $participante   = $participantes->first();
     
         if ($participante) {
             $fechaInicioCapacitacion = $participante->fechainiciocapacitacion;            
