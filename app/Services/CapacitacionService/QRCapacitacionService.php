@@ -45,7 +45,9 @@ class QRCapacitacionService{
                 ->where('capacitacion', $participante->capacitacion) 
                 ->where('persona', $participante->persona) 
                 ->where('auxiliar', $participante->auxiliar) 
-                ->update(['rutaqr' =>  ".../capacitacion/qr/{$participante->capacitacion}/{$fileName}"]);
+                ->update([
+                    'rutaqr' =>  ".../capacitacion/qr/{$participante->capacitacion}/{$fileName}",
+                    'envioqr'=>  "1"]);
         } 
         $this->enviarQR($participante, $filePath);
     }
@@ -62,6 +64,10 @@ class QRCapacitacionService{
                                 ->on('det.id', '=', DB::raw('SUBSTRING(pa.concepto_inscripcion, 2)'));
                         })
                         ->where('cap.capacitacion', $capacitacion)
+                        ->where(function($query) {
+                            $query->where('pa.envioqr', '0')
+                                ->orWhereNull('pa.envioqr'); 
+                        })
                         ->where('det.modalidad', '2') //PRESENCIAL
                         ->select(
                             'cap.capacitacion',
@@ -98,7 +104,6 @@ class QRCapacitacionService{
         $filePath           = str_replace('public/', '/storage/', $filePath);
 
         $img_qr_congreso    = $congreso_url . $filePath;
-        Log::info($img_qr_congreso);
 
         if (!empty($participante->email)) {
             Mail::send('emails.sendQRevent', [
