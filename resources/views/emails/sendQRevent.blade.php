@@ -69,7 +69,7 @@
         </div>
         <div class="content">
             <h2>Gracias por registrarte, {{ $participante->nombrecompleto }}</h2>
-            <p>Por favor, encuentra a continuación tu código QR para verificar tu registro en el evento:</p>
+            <p>Adjuntamos tu QR para el ingreso al evento:</p>
 
             <div class="qr-code">
                 <img src="{{ $ImagePath }}" alt="Código QR" style="max-width: 100%; height: auto; border: none;" />
