@@ -165,7 +165,7 @@ class ParticipantController extends Controller
             $is_form_diplomado
         ]);
         $resp =  $res[0]->result;
-
+        $payment_url = 'https://pagonline.uct.edu.pe';
         if ($resp == 'OK') {
             $confirmation_code = Str::random(25);
             $event = DB::table('cap_capacitacion')
@@ -175,7 +175,7 @@ class ParticipantController extends Controller
             $event_name = $event->descripcion;
             $is_internal = $rolesCount > 0;
 
-            $payment_url = 'https://pagonline.uct.edu.pe';
+
             if($is_internal){
                 $payment_url = config('app.env', 'production') == 'production'
                 ? 'https://pagonline.uct.edu.pe'
