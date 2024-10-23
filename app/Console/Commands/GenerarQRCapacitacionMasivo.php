@@ -51,19 +51,18 @@ class GenerarQRCapacitacionMasivo extends Command
         $capacitacion   = 'CP20240010';
         $participantes  = $this->qrCapacitacionService->obtenerParticipantes($capacitacion);
         $participante   = $participantes->first();
-    
+
         if ($participante) {
-            $fechaInicioCapacitacion = $participante->fechainiciocapacitacion;            
+            $fechaInicioCapacitacion = $participante->fechainiciocapacitacion;
             $fechaActualLima = Carbon::now('America/Lima');
-    
+
             if (!empty($fechaInicioCapacitacion) && $fechaActualLima->isBefore(Carbon::parse($fechaInicioCapacitacion))) {
                 try {
                     foreach ($participantes as $participante) {
                         $this->qrCapacitacionService->generarQRyenviar($participante);
                         // Log::info("QR generado y enviado a: {$participante->email} para la capacitación: {$capacitacion}");
                         echo "QR generado de {$participante->auxiliar} y enviado a: {$participante->email} para la capacitación: {$capacitacion}\n";
-
-                        sleep(3);
+                        sleep(2);
                     }
                 } catch (\Exception $e) {
                     $this->error("Error al generar o enviar los códigos QR: " . $e->getMessage());
@@ -74,7 +73,7 @@ class GenerarQRCapacitacionMasivo extends Command
         } else {
             echo "No se encontraron participantes para la capacitación.";
         }
-    
+
         return 0;
     }
 }

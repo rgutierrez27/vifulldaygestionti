@@ -17,24 +17,24 @@ class QRCapacitacionService{
         $erp_url = config('app.env', 'production') == 'production'
                 ? 'https://erp.uct.edu.pe'
                 : 'https://testerp.uct.edu.pe';
-    
+
         $data = "{$participante->capacitacion}*{$participante->persona}*{$participante->auxiliar}";
-    
+
         $dataencryp = GeneralHelper::encriptString($data);
         $dataUrl = $erp_url . '/verificacionCapacitacion.php?i=' . $dataencryp;
-        
+
         $qrCode = QrCode::create($dataUrl)->setSize(300)->setMargin(10);
         $timestamp = time();
 
         $fileName = "{$participante->capacitacion}_{$participante->auxiliar}_{$timestamp}.png";
         $folderPath = 'public/capacitacion/qr';
         $filePath = "{$folderPath}/{$participante->capacitacion}/{$fileName}";
-    
+
         if (!Storage::exists($folderPath . '/' . $participante->capacitacion)) {
             Storage::makeDirectory($folderPath . '/' . $participante->capacitacion, 0777, true);
             chmod(Storage::path($folderPath . '/' . $participante->capacitacion), 0777);
         }
-    
+
         $writer = new PngWriter();
         $result = $writer->write($qrCode);
         $result->saveToFile(Storage::path($filePath));
@@ -42,16 +42,16 @@ class QRCapacitacionService{
         if ($result) {
             DB::connection('mysql_erp_integrado')
                 ->table('cap_capacitacionparticipante')
-                ->where('capacitacion', $participante->capacitacion) 
-                ->where('persona', $participante->persona) 
-                ->where('auxiliar', $participante->auxiliar) 
+                ->where('capacitacion', $participante->capacitacion)
+                ->where('persona', $participante->persona)
+                ->where('auxiliar', $participante->auxiliar)
                 ->update([
                     'rutaqr' =>  ".../capacitacion/qr/{$participante->capacitacion}/{$fileName}",
                     'envioqr'=>  "1"]);
-        } 
+        }
         $this->enviarQR($participante, $filePath);
     }
-    
+
     public function obtenerParticipantes($capacitacion)
     {
         $participantes = DB::connection('mysql_erp_integrado')
@@ -66,7 +66,7 @@ class QRCapacitacionService{
                         ->where('cap.capacitacion', $capacitacion)
                         ->where(function($query) {
                             $query->where('pa.envioqr', '0')
-                                ->orWhereNull('pa.envioqr'); 
+                                ->orWhereNull('pa.envioqr');
                         })
                         ->where('det.modalidad', '2') //PRESENCIAL
                         ->select(
@@ -85,6 +85,7 @@ class QRCapacitacionService{
                             'det.descripcion AS estudiante',
                             'det.modalidad'
                         )
+                        ->limit(100)
                         ->get();
         return $participantes;
     }
@@ -114,10 +115,10 @@ class QRCapacitacionService{
                 $message->to($participante->email, $participante->nombrecompleto)
                     ->subject("ACCESO A {$participante->descripcion}")
                     ->attach($qrFilePath, [
-                        'as' => 'qr_evento.png',    
-                        'mime' => 'image/png',      
-                        'content_id' => 'qr_code',  
-                        'inline' => true,           
+                        'as' => 'qr_evento.png',
+                        'mime' => 'image/png',
+                        'content_id' => 'qr_code',
+                        'inline' => true,
                     ]);
             });
         } else {
