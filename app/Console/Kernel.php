@@ -25,8 +25,8 @@ class Kernel extends ConsoleKernel
     protected function schedule(Schedule $schedule)
     {
         // $schedule->command('inspire')->hourly();
-        $schedule->command('qr:generar-masivo')->hourly();
-        $schedule->command('virtual:envio-enlace')->hourly();
+        // $schedule->command('qr:generar-masivo')->hourly();
+        // $schedule->command('virtual:envio-enlace')->hourly();
     }
 
     /**
