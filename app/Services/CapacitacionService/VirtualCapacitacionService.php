@@ -42,7 +42,7 @@ class VirtualCapacitacionService{
                             'det.descripcion AS estudiante',
                             'det.modalidad'
                         )
-                        ->limit(100)
+                        ->limit(200)
                         ->get();
         return $participantes;
     }
@@ -60,7 +60,7 @@ class VirtualCapacitacionService{
                 $message->to($participante->email, $participante->nombrecompleto)
                     ->subject("{$participante->descripcion}");
             });
-            
+
             if (count(Mail::failures()) == 0) {
                 DB::connection('mysql_erp_integrado')
                 ->table('cap_capacitacionparticipante')

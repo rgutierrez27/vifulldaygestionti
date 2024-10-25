@@ -85,7 +85,7 @@ class QRCapacitacionService{
                             'det.descripcion AS estudiante',
                             'det.modalidad'
                         )
-                        ->limit(100)
+                        ->limit(200)
                         ->get();
         return $participantes;
     }
